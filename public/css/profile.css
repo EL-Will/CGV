@@ -1,0 +1,131 @@
+.buffer-line{
+    border-bottom: 3px solid #241d1e;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.mb-20{
+    margin-bottom: 20px;
+}
+.mt-40{
+    margin-top: 40px;
+}
+.box-avatar{
+    width:100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-radius: 50%;
+    filter: drop-shadow(0 4px 2px rgba(0,0,0,.25));
+}
+.format-img{
+    width:200px;
+    height: 200px;
+    border-radius: 50%;
+}
+.pos-center{
+    text-align: center;
+    color: black;
+    font-weight: 500;
+    font-size: 20px;
+}
+.choses-img{
+    text-decoration: underline;
+}
+.box-firstname1,.box-lastname1,.box-password1,.box-email1, .box-contact-email, .box-conatct-phone, .box-conatct-linkedin, .box-contact-twitter, .box-contact-github{
+    width:100%;
+    height: 50px;
+    border: 1px solid gainsboro;
+    border-radius: 10px;
+}
+.input-firstname,.input-lastname,.input-email,.input-password, .input-contact-email, .input-contact-phone, .input-contact-linkedin, .input-conatct-twitter, .input-contact-github{
+    width:100%;
+    height: 100%;
+    border: none;
+    border-radius: 10px;
+    padding: 0px 10px;
+}
+.mt-10{
+    margin-top: 10px;
+}
+.box-savebtn, .box-save-publicbtn{
+    width:100%;
+    height: 50px;
+    border-radius: 50px;
+    background-color: black;
+}
+.save-btn{
+    width:100%;
+    height: 100%;
+    border: none;
+    border-radius: 50px;
+    color:white;
+    font-weight: 500;
+}
+.pd-r-0{
+    padding-right: 0px;
+}
+.format-title1{
+    color: black;
+    text-align: center;
+    font-size: 25px;
+}
+.form-public-profile{
+    border: 1px solid #ced4da;
+    border-radius: 20px;
+    box-shadow: 0 1px 4px rgb(0 0 0 / 25%);
+}
+.format-title2{
+    color: black;
+    font-size: 20px;
+}
+.format-title-email{
+    color: black;
+    font-weight: 500;
+}
+.flex-wrap{
+    flex-wrap: nowrap;
+    gap: 10px;
+}
+.flex-box-email{
+    display: flex;
+    align-items: center;
+}
+.format-title3{
+    color: black;
+    font-size: 25px;
+}
+.format-title4{
+    color: gray;
+}
+.format-title5{
+    color: black;
+    font-weight: 500;
+}
+.box-save-publicbtn:hover, .box-savebtn:hover{
+    background: rgba(0, 0, 0, 0.75);
+}
+.underline{
+    background-color: #04aa6d !important;
+    height: 3px;
+    left: 15px;
+    position: absolute;
+    transition: top .5s ease;
+    width: 68%;
+    z-index: 1;
+}
+.pos1-top{
+    top: 20px;
+}
+.pos2-top{
+    top: 65px;
+}
+@media(max-width:768px){
+    .hide-title-profile{
+        display: none;
+    }
+    .m-t-c-10{
+        margin-top: 10px;
+    }
+}

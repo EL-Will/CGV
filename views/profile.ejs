@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/common.movie.css">
+    <link rel="stylesheet" href="/css/profile.css">
+</head>
+  <body>
+    <%-include ('headerLogin')%>
+    <div class="main">
+        <div class="row format-row p-l-c-127 p-r-c-127 bgr-color-white p-t-5 p-b-5">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 flex-center-y">
+                <a href="#" class="m-t--4"> <img src="/image/bg-cgv-bread-home.png" alt="home"></a>
+                <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
+                <span class="m-l-10">Account</span>
+                <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
+                <span class="m-l-10"><strong>Profile</strong></span>
+            </div>
+        </div>
+        <div class="row format-row p-l-127 p-r-127 m-t-20">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-3 hide-title-profile">
+                <div class="mb-20">
+                    <a href="#formProfile" class="format-text1" id="my-profile">My Profile</a>
+                </div>
+                <div class="mb-20">
+                    <a href="#formPublicProfile" class="format-text1" id="public-profile">My Transaction</a>
+                </div>
+                <div class="underline pos1-top"></div>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-12 col-12">
+                <form class="form-profile" id="formProfile" action="">
+                    <div class="row format-row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title1">My Profile</div>
+                    </div>
+                    <!-- <div class="row format-row mt-20">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-3"></div>
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-6">
+                            <div class="box-avatar">
+                                <img src="" class="format-img" id="avatar" alt="">
+                            </div>
+                        </div>
+                    </div> -->
+                    <!-- <div class="row format-row mt-20">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 pos-center" id="username"></div>
+                    </div>
+                    <div class="row format-row mt-20">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 pos-center">
+                            <button type="button" id="chosesImg" class="choses-img">Choose image</button>
+                        </div>
+                    </div> -->
+                    <div class="row format-row mt-40">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title3">User Name</div>
+                    </div>
+                    <div class="row format-row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title4">For Account, Public Profile and
+                            Certificates</div>
+                    </div>
+                    <div class="row format-row mt-10">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5 padding-0">Username</div>
+                            </div>
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
+                                    <div class="box-firstname1">
+                                        <input readonly type="text" id="username" class="input-firstname" name="username"
+                                        value="<%=user[0].name%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 m-t-c-10">
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5 padding-0">Phone Number</div>
+                            </div>
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
+                                    <div class="box-lastname1">
+                                        <input readonly type="text" id="phonenumber" class="input-lastname" name="phonenumber"
+                                        value="<%=user[0].phonenumber%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row format-row mt-10">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5 padding-0">Date Of Birth</div>
+                            </div>
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
+                                    <div class="box-firstname1">
+                                        <input readonly type="text" id="dob" class="input-firstname" name="dob"
+                                        value="<%=user[0].dob%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 m-t-c-10">
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5 padding-0">Gender</div>
+                            </div>
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
+                                    <div class="box-lastname1">
+                                        <input readonly type="text" id="gender" class="input-lastname" name="gender"
+                                        value="<%=user[0].gender%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row format-row mt-10">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5">City</div>
+                    </div>
+                    <div class="row format-row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="box-firstname1">
+                                <input readonly type="text" id="city" class="input-firstname" name="city"
+                                value="<%=user[0].city%>">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row format-row mt-40">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title3">Login</div>
+                        
+                    </div>
+                    <div class="row format-row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title4">Your Tuan.com Login Credentials
+                        </div>
+                    </div>
+                    <div class="row format-row mt-10">
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5 padding-0">Email</div>
+                            </div>
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
+                                    <div class="box-email1">
+                                        <input type="text" readonly id="email" class="input-email" name="email"
+                                        value="<%=user[0].email%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-12 m-t-c-10">
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title5 padding-0">Password</div>
+                            </div>
+                            <div class="row format-row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-12 padding-0">
+                                    <div class="box-password1">
+                                        <input type="password" readonly id="password" class="input-password" name="password"
+                                        value="<%=user[0].password%>">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- <div class="row format-row mt-10">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="row format-row">
+                                <div class="col-lg-8 col-md-8 col-sm-8 col-8"></div>
+                                <div class="pd-r-0 col-lg-4 col-md-4 col-sm-4 col-4">
+                                    <div class="box-savebtn">
+                                        <button type="button" id="saveProfile" class="save-btn">SAVE</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </form>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 mt-40 mb-20">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <form action="" class="form-public-profile p-all-10" id="formPublicProfile">
+                        <div class="row format-row mt-20">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title1">My Transaction</div>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table table-sm">
+                                <thead>
+                                  <tr class="table-success">
+                                    <th scope="col">#</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Transaction Code</th>
+                                    <th scope="col">Ticket Code</th>
+                                    <th scope="col">Cinema</th>
+                                    <th scope="col">Room</th>
+                                    <th scope="col">Movie</th>
+                                    <th scope="col">Price</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <%for(let i = 0; i<booking.length; i++){ %>
+                                    <tr>
+                                        <th scope="row" class="table-danger row-id"></th>
+                                        <td class="table-danger"><%=booking[i].schedule_date%></td>
+                                        <td class="table-danger"><%=booking[i].booking_id%></td>
+                                        <td class="table-danger"></td>
+                                        <td class="table-danger"><%=booking[i].cinema_name%></td>
+                                        <td class="table-danger"><%=booking[i].room_name%></td>
+                                        <td class="table-danger"><%=booking[i].movie_name%></td>
+                                        <td class="table-danger"><%=booking[i].price%></td>
+                                    </tr>
+                                  <%}%>
+                                </tbody>
+                              </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                <div class="buffer-line"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/headerLogin.js"></script>
+    <script src="/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,444 @@
+.text-underline{
+    text-decoration: underline;
+}
+.buffer-line{
+    width: 100%;
+    border-bottom: 1px solid rgb(204, 202, 202);
+}
+.buffer-line-100{
+    width: 100px;
+    border-bottom: 2px solid orange;
+}
+.detail-text-subtitle{
+    color: rgb(112, 111, 111);
+}
+.detail-content-subtitle{
+    font-weight: 500;
+}
+.text-movie-content{
+    font-weight: 700;
+    font-size: 20px;
+}
+.size-like{
+    font-size: 20px;
+}
+.btn-booking{
+    border: none;
+    width: 100px;
+    height: 35px;
+    border-radius: 2px;
+    background-color: rgb(238, 94, 94);
+    color: white;
+    font-weight: 600;
+}
+.btn-like{
+    border: none;
+    width: 100px;
+    height: 35px;
+    border-radius: 2px;
+    background-color: rgb(96, 96, 247);
+}
+/* Solutions */
+.movie-technology-icons a span.movie-detail-type-3d {
+    background-position: 875px 0 !important;
+}
+.movie-technology-icons a span.movie-detail-type-4dx{
+    background-position: -363px 0;
+}
+.movie-technology-icons a span.movie-detail-type-imax{
+    background-position: -501px 0;
+}
+.movie-technology-icons a span.movie-detail-type-2d{
+    background-position: -571px 0;
+}
+.movie-technology-icons a span.movie-detail-type-screenx{
+    background-position: -1005px -1px;
+}
+/* Rating */
+span.movie-rating-detail.c13 {
+    background-position: -788px 0px;
+}
+span.movie-rating-detail.c16 {
+    background-position: -858px 0px;
+}
+span.movie-rating-detail.c18 {
+    background-position: -928px 0px;
+}
+span.movie-rating-detail.p {
+    background-position: -718px 0px;
+}
+.format-name-movie{
+    font-size: 20px;
+}
+.format-btn-city{
+    width:100%;
+    height: 40px;
+    background-color: wheat;
+    border-radius: 2px;
+}
+.text-align-center{
+    text-align: center;
+    line-height: 40px;
+}
+.current{
+    background-color: rgba(0, 0, 0, 0.781) !important;
+    color: white;
+}
+.format-btn-solution{
+    width:100%;
+    height: 40px;
+    background-color: wheat;
+    border-radius: 2px;
+}
+.bk-color{
+    background-color: rgba(0, 0, 0, 0.301);
+}
+@media (min-width: 992px){
+    .detail-fit-image{
+        float: left;
+        width:100%;
+    }
+    .play-btn {
+        height: 70px;
+        width: 70px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        cursor: pointer;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        transition: all .4s;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 999;
+    }
+    .size-icon-play{
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.705);
+    }
+    .btn-p{
+        position: absolute;
+        top: 30%;
+        left: 38%;
+    }
+    .modal-dialog{
+        max-width: 50% !important;
+        margin: 5rem auto !important;
+    }
+    .detail-text-tilte{
+        color: rgb(109, 104, 104);
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .movie-technology-icons a span {
+        background-image: url(/image/movie-icon.png);
+        display: inline-block;
+        height: 45px;
+        margin-top: 5px;
+        position: relative;
+        text-indent: -99999px;
+        width: 64px;
+    }
+    .movie-rating-detail {
+        float: left;
+        font-size: 0px;
+        display: block;
+        height: 45px;
+        width: 68px;
+        margin-top: 5px;
+        background-image: url(/image/movie-icon.png);
+    }
+    .padding-c-0{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px){
+    .detail-fit-image{
+        float: left;
+        width:100%;
+    }
+    .play-btn {
+        height: 70px;
+        width: 70px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 35%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        cursor: pointer;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        transition: all .4s;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 999;
+    }
+    .size-icon-play{
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.705);
+    }
+    .btn-p{
+        position: absolute;
+        top: 30%;
+        left: 38%;
+    }
+    .modal-dialog{
+        max-width: 72% !important;
+        margin: 5rem auto !important;
+    }
+    .detail-text-tilte{
+        color: rgb(109, 104, 104);
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .movie-technology-icons a span {
+        background-image: url(/image/movie-icon.png);
+        display: inline-block;
+        height: 45px;
+        margin-top: 5px;
+        position: relative;
+        text-indent: -99999px;
+        width: 64px;
+    }
+    .movie-rating-detail {
+        float: left;
+        font-size: 0px;
+        display: block;
+        height: 45px;
+        width: 68px;
+        margin-top: 5px;
+        background-image: url(/image/movie-icon.png);
+    }
+    .p-l-c-0{
+        padding-left: 0px;
+    }
+    .p-r-c-15{
+        padding-right: 15px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px){
+    .detail-fit-image{
+        float: none;
+        text-align: center;
+        width:100%;
+    }
+    .play-btn {
+        height: 70px;
+        width: 70px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        cursor: pointer;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        transition: all .4s;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 999;
+    }
+    .size-icon-play{
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.705);
+    }
+    .btn-p{
+        position: absolute;
+        top: 30%;
+        left: 38%;
+    }
+    .modal-dialog{
+        max-width: 90% !important;
+        margin: 5rem auto !important;
+    }
+    .detail-text-tilte{
+        color: rgb(109, 104, 104);
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .movie-technology-icons a span {
+        background-image: url(/image/movie-icon.png);
+        display: inline-block;
+        height: 45px;
+        margin-top: 5px;
+        position: relative;
+        text-indent: -99999px;
+        width: 64px;
+    }
+    .movie-rating-detail {
+        float: left;
+        font-size: 0px;
+        display: block;
+        height: 45px;
+        width: 68px;
+        margin-top: 5px;
+        background-image: url(/image/movie-icon.png);
+    }
+    .p-r-c-15{
+        padding-right: 15px;
+    }
+    .p-l-c-15{
+        padding-left: 15px;
+    }
+    .hide-now-showing{
+        display: none;
+    }
+    .format-text-directly{
+        font-size: 12px;
+    }
+}
+@media (min-width: 450px) and (max-width: 576px){
+    .detail-fit-image{
+        float: none;
+        text-align: center;
+        width:100%;
+    }
+    .play-btn {
+        height: 70px;
+        width: 70px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        cursor: pointer;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        transition: all .4s;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 999;
+    }
+    .size-icon-play{
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.705);
+    }
+    .btn-p{
+        position: absolute;
+        top: 30%;
+        left: 38%;
+    }
+    .modal-dialog{
+        max-width: 98% !important;
+        margin: 5rem auto !important;
+    }
+    .detail-text-tilte{
+        color: rgb(109, 104, 104);
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .movie-technology-icons a span {
+        background-image: url(/image/movie-icon.png);
+        display: inline-block;
+        height: 45px;
+        margin-top: 5px;
+        position: relative;
+        text-indent: -99999px;
+        width: 64px;
+    }
+    .movie-rating-detail {
+        float: left;
+        font-size: 0px;
+        display: block;
+        height: 45px;
+        width: 68px;
+        margin-top: 5px;
+        background-image: url(/image/movie-icon.png);
+    }
+    .p-r-c-15{
+        padding-right: 15px;
+    }
+    .p-l-c-15{
+        padding-left: 15px;
+    }
+    .hide-now-showing{
+        display: none;
+    }
+    .format-text-directly{
+        font-size: 12px;
+    }
+}
+@media (max-width: 450px){
+    .detail-fit-image{
+        float: none;
+        text-align: center;
+        width:100%;
+    }
+    .play-btn {
+        height: 70px;
+        width: 70px;
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0;
+        cursor: pointer;
+        opacity: 1;
+        background-color: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        transition: all .4s;
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        z-index: 999;
+    }
+    .size-icon-play{
+        font-size: 30px;
+        color: rgba(255, 255, 255, 0.705);
+    }
+    .btn-p{
+        position: absolute;
+        top: 30%;
+        left: 38%;
+    }
+    .modal-dialog{
+        max-width: 98% !important;
+        margin: 5rem auto !important;
+    }
+    .detail-text-tilte{
+        color: rgb(109, 104, 104);
+        font-size: 30px;
+        font-weight: 500;
+        margin-bottom: 20px;
+    }
+    .movie-technology-icons a span {
+        background-image: url(/image/movie-icon.png);
+        display: inline-block;
+        height: 45px;
+        margin-top: 5px;
+        position: relative;
+        text-indent: -99999px;
+        width: 64px;
+    }
+    .movie-rating-detail {
+        float: left;
+        font-size: 0px;
+        display: block;
+        height: 45px;
+        width: 68px;
+        margin-top: 5px;
+        background-image: url(/image/movie-icon.png);
+    }
+    .p-r-c-15{
+        padding-right: 15px;
+    }
+    .p-l-c-15{
+        padding-left: 15px;
+    }
+    .hide-now-showing{
+        display: none;
+    }
+    .format-text-directly{
+        font-size: 12px;
+    }
+}

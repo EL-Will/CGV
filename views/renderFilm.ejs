@@ -1,0 +1,95 @@
+<div class="main">
+    <div class="row format-row p-l-c-127 p-r-c-127 bgr-color-white p-t-5 p-b-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 flex-center-y">
+            <a href="#" class="m-t--4"> <img src="/image/bg-cgv-bread-home.png" alt="home"></a>
+            <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
+            <span class="m-l-10">Movies</span>
+            <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
+            <span class="m-l-10"><strong>Now Showing</strong></span>
+        </div>
+    </div>
+    <div class="row format-row p-l-127 p-r-127 page-title bgr-color-white">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 category-title">
+            <h1 class="format-text-tilte">Now Showing</h1>
+            <div class="sub-category hide-sub">
+                <ul>
+                    <li>
+                        <a href="" class="format-text-subtitle">COMING SOON</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown-sub-category hide-dropdown">
+                <button class="btn-dropdown" id="dropdownSubBtn" ><i class="fa-regular fa-square-caret-down"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" class="format-text-subtitle">COMING SOON</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row format-row p-l-127 p-r-127">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+            <div class="grid-4-img">
+                <%for(let i=0; i< data.length; i++){%>
+                <div class="row format-row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                        <div class="box-film">
+                            <%if(data[i].rated_name == "C13"){%>
+                                <span class="nmovie-rating nmovie-rating-c13"><%=data[i].rated_name%></span>
+                            <%} else if(data[i].rated_name == "C16") {%>
+                                <span class="nmovie-rating nmovie-rating-c16"><%=data[i].rated_name%></span>
+                            <%} else if(data[i].rated_name == "C18") {%>
+                                <span class="nmovie-rating nmovie-rating-c18"><%=data[i].rated_name%></span>
+                            <%} else {%>
+                                <span class="nmovie-rating nmovie-rating-p"><%=data[i].rated_name%></span>
+                            <%}%>
+                            <div class="pos-center-img">
+                                <img src="<%=data[i].movie_poster%>" class="img-fluid product-image" id="<%=data[i].movie_id%>" alt="<%=data[i].movie_name%>">
+                            </div>
+                            <h5 class="movie_name"><%=data[i].movie_name%></h5>
+                            <span><strong>Running Time: </strong><%=data[i].movie_length%></span>
+                            <br>
+                            <span><strong>Release Date: </strong><%=(data[i].movie_release).toString()%></span>
+                            <div class="flex-like-booking">
+                                <button class="btn-like" id="<%=data[i].movie_id%>">
+                                    <i class="fa-regular fa-thumbs-up size-like"></i>
+                                    <span class="txt-like">Like <%=data[i].movie_like%></span>
+                                </button>
+                                <button class="btn-booking" id="<%=data[i].movie_id%>">Booking</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <%}%>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+            <div class="buffer-line"></div>
+        </div>
+    </div>
+</div>
+<!-- <div class="modal" tabindex="-1" id="exampleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">BOOKING</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="hide-spinner" id="spinnerLoading">
+                <div class="spinner-border text-info"></div>
+            </div>
+            <div class="form-outline flex-fill mb-0">
+                <input type="text" onfocus="(this.type='date')" id="dateShowing"
+                    class="form-control" placeholder="Select Date" name="dateShowing" />
+            </div>
+            <div class="buffer-line"></div>
+            <div>
+
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtn">Close</button>
+        </div>
+      </div>
+    </div>
+</div> -->

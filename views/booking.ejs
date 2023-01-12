@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/common.movie.css">
+    <link rel="stylesheet" href="/css/booking.css">
+  </head>
+  <body id="body">
+    <%- include('headerLogin')%>
+    <div class="main m-t-20 m-b-20">
+        <div class="row format-row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1 col-xxl-1 padding-0"></div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-7 col-xl-7 col-xxl-7">
+                <div class="hide-spinner" id="spinnerLoading">
+                    <div class="spinner-border text-info"></div>
+                </div>
+                <div class="box-outer-seat">
+                    <h2 class="booking-title">Chọn Ghế:</h2>
+                    <div class="screen">SCREEN</div>
+                    <div class="seat-map-wrapper">
+                        <div class="seat-map ng-scope" id="renderSeats">
+                            <!-- <ul class="seat-row ng-scope">
+                                <li class="ng-binding index"></li>
+                                <li class="seat-col-wrapper seat-width">
+                                    <ul class="seat-col">
+                                        <li style="transform: translate(-550%,0);" class="ng-binding ng-scope valiable">11</li>
+                                        <li style="transform: translate(-440%,0);" class="ng-binding ng-scope valiable">10</li>
+                                        <li style="transform: translate(-330%,0);" class="ng-binding ng-scope valiable">9</li>
+                                        <li style="transform: translate(-220%,0);" class="ng-binding ng-scope valiable">8</li>
+                                        <li style="transform: translate(-110%,0);" class="ng-binding ng-scope valiable">7</li>
+                                        <li style="transform: translate(0%,0);" class="ng-binding ng-scope valiable">6</li>
+                                        <li style="transform: translate(110%,0);" class="ng-binding ng-scope valiable">5</li>
+                                        <li style="transform: translate(220%,0);" class="ng-binding ng-scope valiable">4</li>
+                                        <li style="transform: translate(330%,0);" class="ng-binding ng-scope valiable">3</li>
+                                        <li style="transform: translate(440%,0);" class="ng-binding ng-scope valiable">2</li>
+                                        <li style="transform: translate(550%,0);" class="ng-binding ng-scope valiable">1</li>
+                                    </ul>
+                                </li>
+                                <li class="ng-binding index">N</li>
+                            </ul> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="seat-description">
+                        <div class="box-of-seat">
+                            <div class="seat-d seat-normal"></div>
+                            <span>Normal</span>
+                        </div>
+                        <div class="box-of-seat">
+                            <div class="seat-d seat-vip"></div>
+                            <span>Vip</span>
+                        </div>
+                        <div class="box-of-seat">
+                            <div class="seat-d seat-sweetbox"></div>
+                            <span>Sweetbox</span>
+                        </div>
+                        <div class="box-of-seat">
+                            <div class="seat-d seat-ng"></div>
+                            <span>NG</span>
+                        </div>
+                        <div class="box-of-seat">
+                            <div class="seat-d seat-selected"></div>
+                            <span>Selected</span>
+                        </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-3 col-xl-3 col-xxl-3 padding-0">
+                <div class="box-show-img-movie">
+                    <div class="padding-all-10">
+                        <div class="booking-box-img ">
+                            <img src="<%=films[0].movie_poster2%>" class="img-fluid main-img" alt="" id="<%=userID%>">
+                        </div>
+                        <div class="booking-box-title">
+                            <span class="booking-format-name-movie"><%=films[0].movie_name%></span>
+                            <br>
+                            <br>
+                            <span class=""><%=films[0].rated_name%>: </span>
+                            <span class="booking-format-subtxt-red"><%=films[0].rated_description%></span>
+                            <div class="buffer-line"></div>
+                            <br>
+                            <span class=""><span class="booking-format-subtxt">Rạp: </span><%=schedule[0].cinema_name%></span>
+                            <div class="buffer-line"></div>
+                            <br>
+                            <span class=""><span class="booking-format-subtxt">Định Dạng: </span><%=schedule[0].format_name%></span>
+                            <div class="buffer-line"></div>
+                            <br>
+                            <span class=""><span class="booking-format-subtxt">Phòng: </span><%=schedule[0].room_name%></span>
+                            <div class="buffer-line"></div>
+                            <br>
+                            <span class=""><span class="booking-format-subtxt">Suất Chiếu: </span><%=schedule[0].schedule_start%> | </span>
+                            <span class=""><%=schedule[0].schedule_date%></span>
+                            <div class="buffer-line"></div>
+                            <br>
+                            <span class=""><span class="booking-format-subtxt class-seat" id="">Ghế: </span><span id="seats"></span></span>
+                            <div class="buffer-line"></div>
+                            <br>
+                            <span class=""><span>Tổng: </span><span id="price">0 </span><span>VND</span></span>
+                            <br>
+                            <br>
+                            <button class="btn-checkout" id="btnCheckout" data-toggle="modal" data-target="#checkOut">Check Out</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-1 col-xl-1 col-xxl-1 padding-0"></div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="checkOut">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Hi <%=username%></h5>
+              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="modalBody">
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtn">Close</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/headerLogin.js"></script>
+    <script src="/js/booking.js"></script>
+</body>
+</html>

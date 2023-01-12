@@ -1,0 +1,125 @@
+
+.flex-center-y{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.page-title{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.category-title {
+    border-bottom: 3px solid #241d1e;
+    margin-bottom: 15px;
+    position: relative;
+}
+.pre-account-expand{
+    position: absolute;
+    min-width: 240px;
+    right: 0;
+    top: 36px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-210px);
+    transition: opacity .2s,visibility 0s linear .2s,transform .25s ease;
+ 
+}
+.pre-account-expand-content {
+    background: #fff;
+    border-radius: 0 0 8px 8px;
+}
+.pt24-sm {
+    padding-top: 24px;
+}
+.pr24-sm {
+    padding-right: 24px;
+}
+.pb24-sm {
+    padding-bottom: 24px;
+}
+.pl24-sm{
+    padding-left: 24px;
+}
+.pre-acct-account li a{
+    font-size: 14px;
+    padding: 4px 8px;
+}
+.pl8-sm{
+    padding-left: 8px;
+}
+.logout-btn{
+    font-size: 13px;
+    color: black !important;
+    padding: 4px 8px;
+    border: none;
+}
+.logout-btn:hover{
+    color:gray !important;
+}
+.content-expand a:hover{
+    color:black;
+}
+@media (min-width: 992px){
+    .format-text-tilte{
+        color: black;
+    }
+    .p-l-c-127{
+        padding-left: 3.5%;
+    } 
+    .p-r-c-127{
+        padding-right: 3.5%;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px){
+    .format-text-tilte{
+        color: black;
+    }
+    .p-l-c-127{
+        padding-left: 3.5%;
+    } 
+    .p-r-c-127{
+        padding-right: 3.5%;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px){
+    .p-l-c-127{
+        padding-left: 2%;
+    } 
+    .p-r-c-127{
+        padding-right: 2%;
+    }
+    .format-text-tilte{
+        color: black;
+    }
+    .format-text-directly{
+        font-size: 12px;
+    }
+}
+@media (min-width: 450px) and (max-width: 576px){
+    .p-l-c-127{
+        padding-left: 2%;
+    } 
+    .p-r-c-127{
+        padding-right: 2%;
+    }
+    .format-text-tilte{
+        color: black;
+    }
+    .format-text-directly{
+        font-size: 12px;
+    }
+}
+@media (max-width: 450px){
+    .p-l-c-127{
+        padding-left: 2%;
+    } 
+    .p-r-c-127{
+        padding-right: 2%;
+    }
+    .format-text-tilte{
+        color: black;
+    }
+    .format-text-directly{
+        font-size: 12px;
+    }
+}

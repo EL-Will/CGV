@@ -1,0 +1,195 @@
+<!-- <nav class="row format-row height-60 bgr-color-gray hide-max-576">
+</nav> -->
+<nav class="row format-row hide-div height-60">
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 padding-0 hide-div m-t-10-0-common m-b-10-0-common">
+        <div class="box-nav2">
+            <img src="/image/icon_promotion25.png" alt="news">
+            <span class="nav2-text">TIN MỚI & ƯU ĐÃI</span>
+        </div>
+    </div>
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 padding-0 hide-div m-t-10-0-common m-b-10-0-common">
+        <div class="box-nav2">
+            <img src="/image/icon_tuyendung.png" alt="recruit">
+            <span class="nav2-text">TUYỂN DỤNG</span>
+        </div>
+    </div>
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 padding-0 hide-div m-t-10-0-common m-b-10-0-common">
+        <div class="box-nav2">
+            <img src="/image/icon_ticket25.png" alt="ticket">
+            <span class="nav2-text">VÉ CỦA TÔI</span>
+        </div>
+    </div>
+    <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 padding-0 hide-div m-t-10-0-common m-b-10-0-common" id="expand-account">
+        <div class="box-nav2 hide-div">
+            <img src="/image/icon_login25.png" alt="login">
+            <span id="nameUser" class="nav2-text">Hi <%=username%></span>
+        </div>
+        <div class="pre-account-expand">
+            <div class="pre-account-expand-content">
+                <nav class="pre-acct-account pt24-sm pr24-sm pb24-sm pl24-sm">
+                    <p class="pl8-sm">Account</p>
+                    <ul>
+                        <li class="content-expand"><a class="logout-btn" id="gotoProfile" data-uid="<%=userID%>">Profile</a></li>
+                        <li class="content-expand"><a class="logout-btn" id="gotoChangePass">Change Password</a>
+                        </li>
+                        <li class="content-expand"><button class="logout-btn"
+                                id="logout-btn" data-toggle="modal" data-target="#Logout">Logout</button></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+</nav>
+<header class="row format-row page-header hide-max-576">
+    <div class="col-12 col-sm-12 col-md-2 col-lg-4 col-xl-4 col-xxl-2 m-t-40 p-l-127 box-nav3 p-l-15 hide-max-576">
+        <a href="#"><img src="/image/cgvlogo.png" alt="cgvlogo"></a>
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 col-xxl-2 pos-center hide-div">
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 col-xxl-2 pos-center hide-div">
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 col-xxl-2 pos-center hide-div">
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 col-xxl-2 pos-center hide-div">
+    </div>
+    <div class="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-4 col-xxl-2 m-t-40 p-r-127 text-align-end hide-div">
+        <a href="#" class="hide-div"> <img src="/image/mua-ve_ngay.png" alt="buy_ticket"> </a>
+    </div>
+</header>
+<header class="row format-row page-header hide-min-576">
+    <div class="col-12 col-sm-12 hide-min-576 pos-logo-small">
+        <a href=""> <image src="/image/cgvlogo-small.png" alt="logoCGV"></image> </a>
+    </div>
+</header>
+<header class="row format-row m-t-0-10-common hide-header-2">
+    <div class="col-4 col-sm-4 col-md-4 box-nav2 border-box-nav2 hide-header-2">
+        <button class="" id="menuBtn">
+            <i class="fa-solid fa-bars icon-size"></i>
+        </button>
+    </div>
+    <div class="col-4 col-sm-4 col-md-4 box-nav2 border-box-nav2 hide-header-2">
+        <div class="">
+            <img src="/image/icon_ticket25.png" alt="ticket">
+        </div>
+    </div>
+    <div class="col-4 col-sm-4 col-md-4 box-nav2 border-box-nav2 hide-header-2">
+        <button class="" id="accountBtn">
+            <i class="fa-solid fa-user icon-size"></i>
+        </button>
+    </div>
+</header>
+<div id="header-nav" class="row format-row skip-content">
+    <nav id="nav">
+        <ol class="nav-primary">
+            <li class="level0 nav-1 parent">
+                <a href="#" class="level0 has-children">
+                    PHIM
+                </a>
+                <ul class="level0">
+                    <li class="level1 nav-1-1">
+                        <a href="/NowShowing" class="level1">Phim Đang Chiếu</a>
+                    </li>
+                    <li class="level1 nav-1-1">
+                        <a href="" class="level1">Phim Sắp Chiếu</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0 nav-2 parent">
+                <a href="#" class="level0 has-children">
+                    RẠP CGV
+                </a>
+                <ul class="level0">
+                    <li class="level1 nav-2-1">
+                        <a href="" class="level1">Tất Cả Các Rạp</a>
+                    </li>
+                    <li class="level1 nav-2-2">
+                        <a href="" class="level1">Rạp Đặc Biệt</a>
+                    </li>
+                    <li class="level1 nav-2-3">
+                        <a href="" class="level1">Rạp 3D</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0 nav-3 parent">
+                <a href="#" class="level0 has-children">
+                    THÀNH VIÊN
+                </a>
+                <ul class="level0">
+                    <li class="level1 nav-3-1">
+                        <a href="/profile/<%=userID%>" class="level1">Tài Khoản CGV</a>
+                    </li>
+                    <li class="level1 nav-3-2">
+                        <a href="" class="level1">Quyền Lợi</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0 nav-4 parent">
+                <a href="#" class="level0 has-children">
+                    CULTUREPLEX
+                </a>
+                <ul class="level0">
+                    <li class="level1 nav-4-1">
+                        <a href="" class="level1">Quầy Online</a>
+                    </li>
+                    <li class="level1 nav-4-2">
+                        <a href="" class="level1">Thuê Rạp & Vé Nhóm</a>
+                    </li>
+                    <li class="level1 nav-4-3">
+                        <a href="" class="level1">e-CGV</a>
+                    </li>
+                    <li class="level1 nav-4-4">
+                        <a href="" class="level1">Thẻ Quà Tặng</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="level0 nav-6 last">
+                <a href="#" class="level0">
+                    TUYỂN DỤNG
+                </a>
+            </li>
+            <li class="level0 nav-6 last">
+                <a href="#" class="level0">
+                    TIN MỚI & ƯU ĐÃI
+                </a>
+            </li>
+        </ol>
+    </nav>
+</div>
+<div id="header-nav2" class="row format-row skip-content">
+    <nav id="nav">
+        <ol class="nav-primary">
+            <li class="level0 nav-5">
+                <a href="#" class="level0">
+                    PROFILE
+                </a>
+            </li>
+            <li class="level0 nav-6">
+                <a href="#" class="level0">
+                    CHANGE PASSWORD
+                </a>
+            </li>
+            <li class="level0 nav-7">
+                <a href="#" class="level0">
+                    LOGOUT
+                </a>
+            </li>
+        </ol>
+    </nav>
+</div>
+<div class="modal" tabindex="-1" id="Logout">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Hi <%=username%></h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Would you like to logout?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-dark" id="quitePage" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+</div>

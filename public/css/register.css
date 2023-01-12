@@ -1,0 +1,33 @@
+.pos-check-input {
+    margin-top: 0.4rem !important;
+    margin-left: -22rem !important;
+}
+.padding-left{
+    padding-left: 1.5rem;
+}
+.r-bday{
+    margin-top: 10px;
+    border: 1px solid gray;
+    border-radius: 4px;
+}
+.select-city{
+    width:100%;
+    height: auto;
+    border-radius: 5px;
+    /* box-shadow: 0 0 0 1px #de543f; */
+    border-color: rgb(211, 211, 211);
+}
+.pd-city{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+.format-color{
+    color: #8d8d8d;
+}
+.signup-form-color{
+    background: #fdfcf0;
+}
+.width-btn-signup{
+    width: 100% !important;
+}
