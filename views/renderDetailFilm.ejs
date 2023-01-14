@@ -1,11 +1,15 @@
-<div class="main">
+<div class="main" id="main">
     <div class="row format-row p-l-c-127 p-r-c-127 bgr-color-white p-t-5 p-b-5">
         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 flex-center-y">
             <a href="#" class="m-t--4"> <img src="/image/bg-cgv-bread-home.png" alt="home"></a>
             <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
             <span class="m-l-10 format-text-directly">Movies</span>
             <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
-            <span class="m-l-10 format-text-directly">Now Showing</span>
+            <%if(data[0].movie_status == 1){%>
+                <span class="m-l-10 format-text-directly">Now Showing</span>
+            <%} else if(data[0].movie_status == 2){%>
+                <span class="m-l-10 format-text-directly">Coming Soon</span>
+            <%}%>
             <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
             <span class="m-l-10 format-text-directly"><strong class="text-underline"><%=data[0].movie_name%></strong></span>
         </div>
@@ -16,7 +20,7 @@
         </div>
     </div>
     <div class="row format-row p-l-127 p-r-127">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-8 col-xl-8 col-xxl-8 padding-0">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 col-xxl-8 padding-0">
             <section>
                 <article>
                     <div class="row format-row">
@@ -112,7 +116,7 @@
                         <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-0 m-t-20 p-r-c-15 p-l-c-15 margin-b-20">
                             <div class="form-outline flex-fill mb-0">
                                 <input type="text" onfocus="(this.type='date')" id="dateShowing"
-                                    class="form-control" placeholder="Select Date" name="dateShowing" />
+                                    class="form-control" placeholder="Select Date" name="dateShowing" data-toggle="modal" />
                             </div>
                             <div class="hide-spinner" id="spinnerLoading">
                                 <div class="spinner-border text-info"></div>
@@ -161,7 +165,7 @@
                 </article>
             </section>
         </div>
-        <div class="col-md-6 col-lg-4 col-xl-4 col-xxl-4 p-r-0 hide-now-showing">
+        <div class="col-lg-4 col-xl-4 col-xxl-4 p-r-0 hide-now-showing">
             <div class="row format-row">
                 <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
                     <span class="detail-text-tilte">NOW SHOWING</span>
@@ -191,22 +195,30 @@
                     <%}%>
                 <%}%>
             </div>
+            <div class="row format-row m-b-20">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 box-more-movie">
+                    <a href="/NowShowing" class="detail-text-tilte">MORE MOVIE</a>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="modal" tabindex="-1" id="exampleModal">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Trailer <%=data[0].movie_name%></h5>
-              <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <iframe style="width:100%; height:300px;" src="<%=data[0].movie_trailer%>" title="<%=data[0].movie_name%>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-          </div>
+    <%-include ('footer')%>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Trailer <%=data[0].movie_name%></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+            <iframe style="width:100%; height:300px;" src="<%=data[0].movie_trailer%>" title="<%=data[0].movie_name%>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
 </div>

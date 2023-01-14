@@ -59,6 +59,25 @@
 .content-expand a:hover{
     color:black;
 }
+.box-input-changepass{
+    width:100%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+#formChangePass .box-input-changepass input{
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    padding: 5px;
+}
+#formChangePass .box-input-changepass button{
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    padding: 5px;
+}
 @media (min-width: 992px){
     .format-text-tilte{
         color: black;

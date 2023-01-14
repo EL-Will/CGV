@@ -16,13 +16,13 @@
     <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 padding-0 hide-div m-t-10-0-common m-b-10-0-common">
         <div class="box-nav2">
             <img src="/image/icon_ticket25.png" alt="ticket">
-            <span class="nav2-text">VÉ CỦA TÔI</span>
+            <a href="/profile/<%=userID%>" class="nav2-text">VÉ CỦA TÔI</a>
         </div>
     </div>
     <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 col-xxl-3 padding-0 hide-div m-t-10-0-common m-b-10-0-common" id="expand-account">
         <div class="box-nav2 hide-div">
             <img src="/image/icon_login25.png" alt="login">
-            <span id="nameUser" class="nav2-text">Hi <%=username%></span>
+            <span id="nameUser" class="nav2-text nav2-text-size">Hi <%=username%></span>
         </div>
         <div class="pre-account-expand">
             <div class="pre-account-expand-content">
@@ -30,7 +30,8 @@
                     <p class="pl8-sm">Account</p>
                     <ul>
                         <li class="content-expand"><a class="logout-btn" id="gotoProfile" data-uid="<%=userID%>">Profile</a></li>
-                        <li class="content-expand"><a class="logout-btn" id="gotoChangePass">Change Password</a>
+                        <li class="content-expand"><a class="logout-btn" 
+                            id="gotoChangePass" data-toggle="modal" data-target="#changePassword">Change Password</a>
                         </li>
                         <li class="content-expand"><button class="logout-btn"
                                 id="logout-btn" data-toggle="modal" data-target="#Logout">Logout</button></li>
@@ -42,7 +43,7 @@
 </nav>
 <header class="row format-row page-header hide-max-576">
     <div class="col-12 col-sm-12 col-md-2 col-lg-4 col-xl-4 col-xxl-2 m-t-40 p-l-127 box-nav3 p-l-15 hide-max-576">
-        <a href="#"><img src="/image/cgvlogo.png" alt="cgvlogo"></a>
+        <a href="/"><img src="/image/cgvlogo.png" alt="cgvlogo"></a>
     </div>
     <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 col-xxl-2 pos-center hide-div">
     </div>
@@ -53,12 +54,12 @@
     <div class="col-2 col-sm-2 col-md-2 col-lg-1 col-xl-1 col-xxl-2 pos-center hide-div">
     </div>
     <div class="col-2 col-sm-2 col-md-2 col-lg-4 col-xl-4 col-xxl-2 m-t-40 p-r-127 text-align-end hide-div">
-        <a href="#" class="hide-div"> <img src="/image/mua-ve_ngay.png" alt="buy_ticket"> </a>
+        <a href="/NowShowing" class="hide-div"> <img src="/image/mua-ve_ngay.png" alt="buy_ticket"> </a>
     </div>
 </header>
 <header class="row format-row page-header hide-min-576">
     <div class="col-12 col-sm-12 hide-min-576 pos-logo-small">
-        <a href=""> <image src="/image/cgvlogo-small.png" alt="logoCGV"></image> </a>
+        <a href="/"> <image src="/image/cgvlogo-small.png" alt="logoCGV"></image> </a>
     </div>
 </header>
 <header class="row format-row m-t-0-10-common hide-header-2">
@@ -90,7 +91,7 @@
                         <a href="/NowShowing" class="level1">Phim Đang Chiếu</a>
                     </li>
                     <li class="level1 nav-1-1">
-                        <a href="" class="level1">Phim Sắp Chiếu</a>
+                        <a href="/ComingSoon" class="level1">Phim Sắp Chiếu</a>
                     </li>
                 </ul>
             </li>
@@ -169,7 +170,7 @@
                 </a>
             </li>
             <li class="level0 nav-7">
-                <a href="#" class="level0">
+                <a href="#" data-toggle="modal" data-target="#Logout" class="level0">
                     LOGOUT
                 </a>
             </li>
@@ -189,6 +190,45 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-dark" id="quitePage" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+</div>
+<div class="modal" tabindex="-1" id="changePassword">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">CHANGE PASSWORD</h5>
+          <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form action="" id="formChangePass">
+                <div class="hide-spinner" id="loading">
+                    <div class="spinner-border text-info"></div>
+                </div>
+                <div class="box-input-changepass">
+                    <input type="text" id="email" placeholder="Email" name="email">      
+                </div>
+                <span class="err-inform" id="errEmail"></span>
+                <div class="box-input-changepass">
+                    <input type="password" id="currentPassword" placeholder="Current Password" name="currentPassword">                   
+                </div>
+                <span class="err-inform" id="errCurrentPassword"></span>
+                <div class="box-input-changepass">
+                    <input type="password" id="newPassword" placeholder="New Password" name="newPassword">                   
+                </div>
+                <span class="err-inform" id="errNewPassword"></span>
+                <div class="box-input-changepass">
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">                    
+                </div>
+                <span class="err-inform" id="errConfirmPassword"></span>
+                <div class="box-input-changepass">
+                    <button type="submit" class="btn btn-dark" id="changePass">CHANGE PASSWORD</button>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

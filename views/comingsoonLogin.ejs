@@ -10,39 +10,47 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/nowshowing.css">
     <link rel="stylesheet" href="/css/common.movie.css">
-    <link rel="stylesheet" href="/css/detailMovie.css">
     <link rel="stylesheet" href="/css/footer.css">
   </head>
-  <body id="body">
+  <body>
     <%- include('headerLogin')%>
-    <%- include('renderDetailFilm')%>
-    <div class="modal" tabindex="-1" id="refresh" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Hi <%=username%>
-            </h5>
-            <button type="button" class="btn-close" data-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modalBody">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeBtn">Close</button>
-          </div>
+    <div class="row format-row p-l-c-127 p-r-c-127 bgr-color-white p-t-5 p-b-5">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 flex-center-y">
+            <a href="#" class="m-t--4"> <img src="/image/bg-cgv-bread-home.png" alt="home"></a>
+            <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
+            <span class="m-l-10">Movies</span>
+            <span class="m-l-10"><img src="/image/bg-cgv-icon-arrow.png" alt="arrow"></span>
+            <span class="m-l-10"><strong>Coming Soon</strong></span>
         </div>
+    </div>
+    <div class="row format-row p-l-127 p-r-127 page-title bgr-color-white">
+      <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 category-title">
+          <h1 class="format-text-tilte">Coming Soon</h1>
+          <div class="sub-category hide-sub">
+              <ul>
+                  <li>
+                      <a href="/NowShowing" class="format-text-subtitle">NOW SHOWING</a>
+                  </li>
+              </ul>
+          </div>
+          <div class="dropdown-sub-category hide-dropdown">
+              <button class="btn-dropdown" id="dropdownSubBtn" ><i class="fa-regular fa-square-caret-down"></i></button>
+              <div id="myDropdown" class="dropdown-content">
+                  <a href="/NowShowing" class="format-text-subtitle">NOW SHOWING</a>
+              </div>
+          </div>
       </div>
     </div>
+    <%- include('renderFilm')%>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/homepage_common.js"></script>
     <script src="/js/common.js"></script>
-    <script src="/js/detailMovie.js"></script>
     <script src="/js/headerLogin.js"></script>
-    <div id="alert">
-      
-    </div>
-  </body>
+</body>
 </html>

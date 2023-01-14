@@ -11,7 +11,9 @@ const {
     GetOneUser,
     GetOneUserByID,
     GetInforBookingByUserID,
-    GetBookingIDByUserID} = require('../models/user.model');
+    GetBookingIDByUserID,
+    GetOneUserByEmail,
+    UpdatePasswordForOneUser} = require('../models/user.model');
 
 let path = require('path');
 let options = {
@@ -42,23 +44,22 @@ let middlewareCheckExistsInforUser = async(req,res,next)=>{
 }
 let CreateUser = async(req,res)=>{
     const hash = await bcrypt.hash(req.body.password,13);
-    let {username,phone,email,dob,gender,city,agree} = req.body;
-    const users = await SetInforUser([username,phone,email,hash,dob,gender,city,agree]);
+    let {username,phone,email,dob,gender,city,agree,role} = req.body;
+    const users = await SetInforUser([username,phone,email,hash,dob,gender,city,agree,role]);
     return res.status(200).json({status: true, message: 'Create User Success'})
 }
 let findOneUser = async (req, res) => {
     let {username,password} = req.body;
     const user = await GetOneUser([username]);
     if(user.length == 0){
-        return res.status(200).json({status: false, message: "Email incorrect"});
+        return res.status(200).json({status: 0, message: "Email incorrect"});
     }
-    console.log(user);
     const isValid = await bcrypt.compare(password, user[0].password);
     if(!isValid){
-        return res.status(200).json({status: false, message: "Password incorrect"});
+        return res.status(200).json({status: 1, message: "Password incorrect"});
     }
     req.session.userId = user[0].id;
-    return res.status(200).json({status: true});
+    return res.status(200).json({status: 2});
 }
 let middlwareCkeckLogin = async(req,res,next)=>{
     let session = req.session.userId;
@@ -117,6 +118,25 @@ let apiGetInforBookingByUserID = async(req,res,next)=>{
     req.booking = newArr;
     next();
 }
+let apiGetOneUserByEmail = async(req,res)=>{
+    const user = await GetOneUserByEmail(req.params.email);
+    if(user.length >0){
+        let {currentPass, newPass} =req.body;
+        const isValid = await bcrypt.compare(currentPass, user[0].password);
+        if(!isValid){
+            return res.status(200).json({status: 1, message: "Password incorrect"});
+        }
+        else{
+            console.log(3);
+            const hash = await bcrypt.hash(newPass,13);
+            const result = await UpdatePasswordForOneUser(req.params.email,hash);
+            return res.status(200).json({status: 2});
+        }
+    }
+    else{
+        return res.status(200).json({status: 0, message: "Email incorrect"});
+    }
+}
 function formatCash(str) {
     return str.split('').reverse().reduce((prev, next, index) => {
         return ((index % 3) ? next : (next + ',')) + prev
@@ -132,4 +152,5 @@ module.exports = {
     middlwareCkeckLogin,
     Logout,
     apiGetOneUserByID,
-    apiGetInforBookingByUserID};
+    apiGetInforBookingByUserID,
+    apiGetOneUserByEmail};

@@ -111,13 +111,7 @@ else {
             }
         }
         if (data.status == false) {
-            let bodyID = document.getElementById('body');
-            if (bodyID.className.indexOf('modal-open') == -1) {
-                document.getElementById('body').classList.toggle('modal-open');
-            }
-            if (bodyID.className.indexOf('bk-color') == -1) {
-                document.getElementById('body').classList.toggle('bk-color');
-            }
+            document.getElementById('alert').innerHTML='<div class="modal-backdrop show"></div>';
             document.getElementById('refresh').classList.toggle('show');
             document.getElementById('refresh').style.display = 'block';
             document.getElementById('modalBody').innerText = data.message;
@@ -126,12 +120,7 @@ else {
             renderSolution(emptyData);
             renderSchedule(emptyCinema, emptySchedule);
             document.getElementById('closeBtn').addEventListener('click', () => {
-                if (bodyID.className.indexOf('modal-open') != -1) {
-                    document.getElementById('body').classList.toggle('modal-open');
-                }
-                if (bodyID.className.indexOf('bk-color') != -1) {
-                    document.getElementById('body').classList.toggle('bk-color');
-                }
+                document.getElementById('alert').innerHTML='';
                 document.getElementById('refresh').classList.toggle('show');
                 document.getElementById('refresh').removeAttribute('style');
                 document.getElementById('modalBody').innerText = '';
@@ -189,9 +178,6 @@ document.getElementById('chooseSchedule').addEventListener('click', async (e) =>
         let path = window.location.pathname;
         let movieID = Number(path.slice(14));
         let scheduleID = Number(e.target.id);
-        console.log('movieID: ', movieID);
-        console.log('scheduleID: ', scheduleID);
-        console.log('OK');
         window.location.href = apiURL4 + `${movieID}/schedule/${scheduleID}`;
     }
 })

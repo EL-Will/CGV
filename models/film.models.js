@@ -2,10 +2,28 @@ const {pool} = require('../config/connectMySQL');
 
 async function GetALLFilmNowShowing(){
     const [rows] =await pool.query(`
-    SELECT tbl_movies.movie_id, tbl_rated.rated_name, tbl_rated.rated_description, tbl_movies.movie_poster, tbl_movies.movie_name, tbl_movies.movie_length, tbl_movies.movie_release, tbl_movies.movie_like, tbl_movies.movie_poster2
+    SELECT tbl_movies.movie_id, tbl_rated.rated_name, 
+    tbl_rated.rated_description, tbl_movies.movie_poster, 
+    tbl_movies.movie_name, tbl_movies.movie_length, 
+    tbl_movies.movie_release, tbl_movies.movie_like, 
+    tbl_movies.movie_poster2, tbl_movies.movie_status
     FROM tbl_rated
     JOIN tbl_movies ON tbl_rated.rated_id = tbl_movies.movie_rated
     WHERE tbl_movies.movie_status = 1
+    ORDER BY tbl_movies.movie_id ASC`);
+    return rows;
+}
+
+async function GetALLFilmComingSoon(){
+    const [rows] =await pool.query(`
+    SELECT tbl_movies.movie_id, tbl_rated.rated_name, 
+    tbl_rated.rated_description, tbl_movies.movie_poster, 
+    tbl_movies.movie_name, tbl_movies.movie_length, 
+    tbl_movies.movie_release, tbl_movies.movie_like, 
+    tbl_movies.movie_poster2, tbl_movies.movie_status
+    FROM tbl_rated
+    JOIN tbl_movies ON tbl_rated.rated_id = tbl_movies.movie_rated
+    WHERE tbl_movies.movie_status = 2
     ORDER BY tbl_movies.movie_id ASC`);
     return rows;
 }
@@ -17,7 +35,7 @@ async function GetOneMovie(id){
     tbl_movies.movie_name, tbl_movies.movie_length, tbl_movies.movie_release, 
     tbl_movies.movie_like, tbl_movies.movie_trailer, tbl_movies.movie_director,
     tbl_movies.movie_actor, tbl_movies.movie_description, tbl_movies.movie_language,
-    tbl_movies.movie_poster2
+    tbl_movies.movie_poster2,tbl_movies.movie_status
     FROM tbl_rated
     JOIN tbl_movies ON tbl_rated.rated_id = tbl_movies.movie_rated
     WHERE tbl_movies.movie_id = ${id}`);
@@ -133,4 +151,5 @@ module.exports = {GetALLFilmNowShowing,
     GetAllCinemasOfMovieInCity,
     GetAllScheduleOfMovieInCity,
     GetScheduleOfMovieByScheduleID,
-    UpdateLikeOneMovie}
+    UpdateLikeOneMovie,
+    GetALLFilmComingSoon}

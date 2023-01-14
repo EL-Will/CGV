@@ -1,0 +1,231 @@
+<div class="main">
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button style="background-color: white;" type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button style="background-color: white;" type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button style="background-color: white;" type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <%for(let i=0; i< banner.length; i++){%>
+                <%if(i == 0){%>
+                    <div class="carousel-item active" data-bs-interval="10000">
+                        <img src="<%=banner[i].banner_url%>" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <!-- <h5>First slide label</h5>
+                        <p>Some representative placeholder content for the first slide.</p> -->
+                        </div>
+                    </div>
+                <%} else if(i==1){%>
+                    <div class="carousel-item" data-bs-interval="2000">
+                        <img src="<%=banner[i].banner_url%>" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <!-- <h5>Second slide label</h5>
+                        <p>Some representative placeholder content for the second slide.</p> -->
+                        </div>
+                    </div>
+                <%} else{%>
+                    <div class="carousel-item">
+                        <img src="<%=banner[i].banner_url%>" class="d-block w-100" alt="...">
+                        <div class="carousel-caption d-none d-md-block">
+                        <!-- <h5>Third slide label</h5>
+                        <p>Some representative placeholder content for the third slide.</p> -->
+                        </div>
+                    </div>
+                <%}%>
+            <%}%>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon " aria-hidden="true" style="filter: grayscale(0%); font-weight: 500;"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true" style="filter: grayscale(0%);"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    <div class="row format-row p-l-127 p-r-127 page-title bgr-color-white">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 category-title">
+            <h1 class="format-text-tilte">Now Showing</h1>
+            <!-- <div class="sub-category hide-sub">
+                <ul>
+                    <li>
+                        <a href="" class="format-text-subtitle">COMING SOON</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown-sub-category hide-dropdown">
+                <button class="btn-dropdown" id="dropdownSubBtn" ><i class="fa-regular fa-square-caret-down"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" class="format-text-subtitle">COMING SOON</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="row format-row p-l-127 p-r-127">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+            <div class="grid-4-img">
+                <%if(data.length<4) {%>
+                    <%for(let i=0; i< data.length; i++){%>
+                        <div class="row format-row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                                <div class="box-film">
+                                    <%if(data[i].rated_name == "C13"){%>
+                                        <span class="nmovie-rating nmovie-rating-c13"><%=data[i].rated_name%></span>
+                                    <%} else if(data[i].rated_name == "C16") {%>
+                                        <span class="nmovie-rating nmovie-rating-c16"><%=data[i].rated_name%></span>
+                                    <%} else if(data[i].rated_name == "C18") {%>
+                                        <span class="nmovie-rating nmovie-rating-c18"><%=data[i].rated_name%></span>
+                                    <%} else {%>
+                                        <span class="nmovie-rating nmovie-rating-p"><%=data[i].rated_name%></span>
+                                    <%}%>
+                                    <div class="pos-center-img">
+                                        <img src="<%=data[i].movie_poster%>" class="img-fluid product-image" id="<%=data[i].movie_id%>" alt="<%=data[i].movie_name%>">
+                                    </div>
+                                    <h5 class="movie_name"><%=data[i].movie_name%></h5>
+                                    <span><strong>Running Time: </strong><%=data[i].movie_length%></span>
+                                    <br>
+                                    <span><strong>Release Date: </strong><%=(data[i].movie_release).toString()%></span>
+                                    <div class="flex-like-booking">
+                                        <button class="btn-like" id="<%=data[i].movie_id%>">
+                                            <i class="fa-regular fa-thumbs-up size-like"></i>
+                                            <span class="txt-like">Like <%=data[i].movie_like%></span>
+                                        </button>
+                                        <button class="btn-booking" id="<%=data[i].movie_id%>">Booking</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                <%} else {%>
+                    <%for(let i=0; i< 4; i++){%>
+                        <div class="row format-row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                                <div class="box-film">
+                                    <%if(data[i].rated_name == "C13"){%>
+                                        <span class="nmovie-rating nmovie-rating-c13"><%=data[i].rated_name%></span>
+                                    <%} else if(data[i].rated_name == "C16") {%>
+                                        <span class="nmovie-rating nmovie-rating-c16"><%=data[i].rated_name%></span>
+                                    <%} else if(data[i].rated_name == "C18") {%>
+                                        <span class="nmovie-rating nmovie-rating-c18"><%=data[i].rated_name%></span>
+                                    <%} else {%>
+                                        <span class="nmovie-rating nmovie-rating-p"><%=data[i].rated_name%></span>
+                                    <%}%>
+                                    <div class="pos-center-img">
+                                        <img src="<%=data[i].movie_poster%>" class="img-fluid product-image" id="<%=data[i].movie_id%>" alt="<%=data[i].movie_name%>">
+                                    </div>
+                                    <h5 class="movie_name"><%=data[i].movie_name%></h5>
+                                    <span><strong>Running Time: </strong><%=data[i].movie_length%></span>
+                                    <br>
+                                    <span><strong>Release Date: </strong><%=(data[i].movie_release).toString()%></span>
+                                    <div class="flex-like-booking">
+                                        <button class="btn-like" id="<%=data[i].movie_id%>">
+                                            <i class="fa-regular fa-thumbs-up size-like"></i>
+                                            <span class="txt-like">Like <%=data[i].movie_like%></span>
+                                        </button>
+                                        <button class="btn-booking" id="<%=data[i].movie_id%>">Booking</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                <%}%>
+            </div>
+        </div>
+        <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+            <div class="buffer-line"></div>
+        </div> -->
+    </div>
+    <div class="row format-row p-l-127 p-r-127 page-title bgr-color-white">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 category-title">
+            <h1 class="format-text-tilte">Coming Soon</h1>
+            <!-- <div class="sub-category hide-sub">
+                <ul>
+                    <li>
+                        <a href="" class="format-text-subtitle">COMING SOON</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="dropdown-sub-category hide-dropdown">
+                <button class="btn-dropdown" id="dropdownSubBtn" ><i class="fa-regular fa-square-caret-down"></i></button>
+                <div id="myDropdown" class="dropdown-content">
+                    <a href="#" class="format-text-subtitle">COMING SOON</a>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    <div class="row format-row p-l-127 p-r-127">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+            <div class="grid-4-img">
+                <%if(comingsoon.length<4) {%>
+                    <%for(let i=0; i< comingsoon.length; i++){%>
+                        <div class="row format-row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                                <div class="box-film">
+                                    <%if(comingsoon[i].rated_name == "C13"){%>
+                                        <span class="nmovie-rating nmovie-rating-c13"><%=comingsoon[i].rated_name%></span>
+                                    <%} else if(comingsoon[i].rated_name == "C16") {%>
+                                        <span class="nmovie-rating nmovie-rating-c16"><%=comingsoon[i].rated_name%></span>
+                                    <%} else if(comingsoon[i].rated_name == "C18") {%>
+                                        <span class="nmovie-rating nmovie-rating-c18"><%=comingsoon[i].rated_name%></span>
+                                    <%} else {%>
+                                        <span class="nmovie-rating nmovie-rating-p"><%=comingsoon[i].rated_name%></span>
+                                    <%}%>
+                                    <div class="pos-center-img">
+                                        <img src="<%=comingsoon[i].movie_poster%>" class="img-fluid product-image" id="<%=comingsoon[i].movie_id%>" alt="<%=comingsoon[i].movie_name%>">
+                                    </div>
+                                    <h5 class="movie_name"><%=comingsoon[i].movie_name%></h5>
+                                    <span><strong>Running Time: </strong><%=comingsoon[i].movie_length%></span>
+                                    <br>
+                                    <span><strong>Release Date: </strong><%=(comingsoon[i].movie_release).toString()%></span>
+                                    <div class="flex-like-booking">
+                                        <button class="btn-like" id="<%=comingsoon[i].movie_id%>">
+                                            <i class="fa-regular fa-thumbs-up size-like"></i>
+                                            <span class="txt-like">Like <%=comingsoon[i].movie_like%></span>
+                                        </button>
+                                        <button class="btn-booking" id="<%=comingsoon[i].movie_id%>">Booking</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                <%} else {%>
+                    <%for(let i=0; i< 4; i++){%>
+                        <div class="row format-row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                                <div class="box-film">
+                                    <%if(comingsoon[i].rated_name == "C13"){%>
+                                        <span class="nmovie-rating nmovie-rating-c13"><%=comingsoon[i].rated_name%></span>
+                                    <%} else if(comingsoon[i].rated_name == "C16") {%>
+                                        <span class="nmovie-rating nmovie-rating-c16"><%=comingsoon[i].rated_name%></span>
+                                    <%} else if(comingsoon[i].rated_name == "C18") {%>
+                                        <span class="nmovie-rating nmovie-rating-c18"><%=comingsoon[i].rated_name%></span>
+                                    <%} else {%>
+                                        <span class="nmovie-rating nmovie-rating-p"><%=comingsoon[i].rated_name%></span>
+                                    <%}%>
+                                    <div class="pos-center-img">
+                                        <img src="<%=comingsoon[i].movie_poster%>" class="img-fluid product-image" id="<%=comingsoon[i].movie_id%>" alt="<%=comingsoon[i].movie_name%>">
+                                    </div>
+                                    <h5 class="movie_name"><%=comingsoon[i].movie_name%></h5>
+                                    <span><strong>Running Time: </strong><%=comingsoon[i].movie_length%></span>
+                                    <br>
+                                    <span><strong>Release Date: </strong><%=(comingsoon[i].movie_release).toString()%></span>
+                                    <div class="flex-like-booking">
+                                        <button class="btn-like" id="<%=comingsoon[i].movie_id%>">
+                                            <i class="fa-regular fa-thumbs-up size-like"></i>
+                                            <span class="txt-like">Like <%=comingsoon[i].movie_like%></span>
+                                        </button>
+                                        <button class="btn-booking" id="<%=comingsoon[i].movie_id%>">Booking</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                <%}%>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+            <div class="buffer-line"></div>
+        </div>
+    </div>
+    <%-include ('footer')%>
+</div>

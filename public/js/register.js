@@ -143,7 +143,8 @@ registerForm.addEventListener('submit', (e) => {
             dob: data.dob,
             gender: data.gender,
             city: data.city,
-            agree: 1
+            agree: 1,
+            role: 0
         }
         const postMethod = {
             method: "POST",

@@ -1,17 +1,18 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Title</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <title>CGV Cinemas Vietnam | Thông tin - Lịch chiếu - Hệ thống rạp chiếu phim đẳng cấp CGV Cinemas Việt Nam</title>
+    <link rel="shortcut icon" href="https://www.cgv.vn/media/favicon/default/cgvcinemas-vietnam-favicon.ico" type="image/x-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="/css/common.movie.css">
     <link rel="stylesheet" href="/css/profile.css">
+    <link rel="stylesheet" href="/css/footer.css">
 </head>
   <body>
     <%-include ('headerLogin')%>
@@ -26,7 +27,7 @@
             </div>
         </div>
         <div class="row format-row p-l-127 p-r-127 m-t-20">
-            <div class="col-lg-3 col-md-3 col-sm-3 col-3 hide-title-profile">
+            <div class="col-lg-3 col-md-3 hide-title-profile">
                 <div class="mb-20">
                     <a href="#formProfile" class="format-text1" id="my-profile">My Profile</a>
                 </div>
@@ -181,48 +182,53 @@
                 </form>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0 mt-40 mb-20">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
                     <form action="" class="form-public-profile p-all-10" id="formPublicProfile">
                         <div class="row format-row mt-20">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-12 format-title1">My Transaction</div>
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-sm">
-                                <thead>
-                                  <tr class="table-success">
-                                    <th scope="col">#</th>
-                                    <th scope="col">Date</th>
-                                    <th scope="col">Transaction Code</th>
-                                    <th scope="col">Ticket Code</th>
-                                    <th scope="col">Cinema</th>
-                                    <th scope="col">Room</th>
-                                    <th scope="col">Movie</th>
-                                    <th scope="col">Price</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <%for(let i = 0; i<booking.length; i++){ %>
-                                    <tr>
-                                        <th scope="row" class="table-danger row-id"></th>
-                                        <td class="table-danger"><%=booking[i].schedule_date%></td>
-                                        <td class="table-danger"><%=booking[i].booking_id%></td>
-                                        <td class="table-danger"></td>
-                                        <td class="table-danger"><%=booking[i].cinema_name%></td>
-                                        <td class="table-danger"><%=booking[i].room_name%></td>
-                                        <td class="table-danger"><%=booking[i].movie_name%></td>
-                                        <td class="table-danger"><%=booking[i].price%></td>
-                                    </tr>
-                                  <%}%>
-                                </tbody>
-                              </table>
+                        <div class="row format-row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                <div class="table-responsive">
+                                    <table class="table table-sm">
+                                        <thead>
+                                          <tr class="table-success">
+                                            <th scope="col">#</th>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Transaction Code</th>
+                                            <th scope="col">Ticket Code</th>
+                                            <th scope="col">Cinema</th>
+                                            <th scope="col">Room</th>
+                                            <th scope="col">Movie</th>
+                                            <th scope="col">Price</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <%for(let i = 0; i<booking.length; i++){ %>
+                                            <tr>
+                                                <th scope="row" class="table-danger row-id"></th>
+                                                <td class="table-danger"><%=booking[i].schedule_date%></td>
+                                                <td class="table-danger"><%=booking[i].booking_id%></td>
+                                                <td class="table-danger"></td>
+                                                <td class="table-danger"><%=booking[i].cinema_name%></td>
+                                                <td class="table-danger"><%=booking[i].room_name%></td>
+                                                <td class="table-danger"><%=booking[i].movie_name%></td>
+                                                <td class="table-danger"><%=booking[i].price%></td>
+                                            </tr>
+                                          <%}%>
+                                        </tbody>
+                                      </table>
+                                </div>
+                            </div>
+                            
                         </div>
+                        
                     </form>
-                </div>
             </div>
             <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
                 <div class="buffer-line"></div>
             </div>
         </div>
+        <%-include ('footer')%>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

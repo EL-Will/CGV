@@ -90,7 +90,6 @@ function renderSeats(rows, seats, listBooking) {
 async function getData() {
     let path = window.location.pathname;
     let scheduleID = Number(path.slice(26));
-    console.log(scheduleID);
     let spinner = document.getElementById('spinnerLoading');
     if (spinner.className.indexOf('hide-spinner') != -1) {
         spinner.classList.toggle('hide-spinner');

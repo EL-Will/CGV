@@ -1,75 +1,146 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Title</title>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="/css/login.css">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>CGV Cinemas Vietnam | Thông tin - Lịch chiếu - Hệ thống rạp chiếu phim đẳng cấp CGV Cinemas Việt Nam</title>
+  <link rel="shortcut icon" href="https://www.cgv.vn/media/favicon/default/cgvcinemas-vietnam-favicon.ico"
+    type="image/x-icon">
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/footer.css">
 </head>
-  <body>
-    <%- include('header')%>
+
+<body>
+  <%- include('header')%>
     <section style="background-color: #9A616D;">
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col col-xl-10">
-              <div class="card" style="border-radius: 1rem;">
-                <div class="row g-0">
-                  <div class="col-md-6 col-lg-5 d-none d-md-block">
-                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
-                      alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
-                  </div>
-                  <div class="col-md-6 col-lg-7 d-flex align-items-center">
-                    <div class="card-body p-4 p-lg-5 text-black">
-      
-                      <form class="login-form">
-      
-                        <div class="d-flex align-items-center mb-3 pb-1">
-                          <span class="h1 fw-bold mb-0"><image src="/image/cgvlogo.png"></image></span>
-                        </div>
-      
-                        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập vào tài khoản của bạn</h5>
-      
-                        <div class="form-outline mb-4">
-                          <input type="text" id="email" class="form-control form-control-lg" name="email" placeholder="Email" />
-                          <span class="err-inform" id="informEmail"></span>
-                        </div>
-      
-                        <div class="form-outline mb-4">
-                          <input type="password" id="password" class="form-control form-control-lg" name="password" placeholder="Password" />
-                          <span class="err-inform" id="informPassword"></span>
-                        </div>
-      
-                        <div class="pt-1 mb-4">
-                          <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập</button>
-                        </div>
-      
-                        <a class="small text-muted" href="#!">Quên mật khẩu?</a>
-                        <p class="mb-5 pb-lg-2" style="color: #393f81;">Bạn chưa có tài khoản? <a href="/register"
-                            style="color: #393f81;">Đăng ký ngay</a></p>
-                        <a href="#!" class="small text-muted">Điều khoản sử dụng.</a>
-                        <a href="#!" class="small text-muted">Quyền riêng tư</a>
-                      </form>
-      
-                    </div>
+      <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+          <div class="col col-xl-10">
+            <div class="card" style="border-radius: 1rem;">
+              <div class="row g-0">
+                <div class="col-md-6 col-lg-5 d-none d-md-block">
+                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img1.webp"
+                    alt="login form" class="img-fluid" style="border-radius: 1rem 0 0 1rem;" />
+                </div>
+                <div class="col-md-6 col-lg-7 d-flex align-items-center">
+                  <div class="card-body p-4 p-lg-5 text-black">
+
+                    <form class="login-form">
+
+                      <div class="d-flex align-items-center mb-3 pb-1">
+                        <span class="h1 fw-bold mb-0">
+                          <image src="/image/cgvlogo.png"></image>
+                        </span>
+                      </div>
+
+                      <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Đăng nhập vào tài khoản của bạn</h5>
+                      <div class="hide-spinner" id="loading">
+                        <div class="spinner-border text-info"></div>
+                      </div>
+                      <div class="form-outline mb-4">
+                        <input type="text" id="email" class="form-control form-control-lg" name="email"
+                          placeholder="Email" />
+                        <span class="err-inform" id="informEmail"></span>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input type="password" id="password" class="form-control form-control-lg" name="password"
+                          placeholder="Password" />
+                        <span class="err-inform" id="informPassword"></span>
+                      </div>
+
+                      <div class="pt-1 mb-4">
+                        <button class="btn btn-dark btn-lg btn-block" type="submit">Đăng nhập</button>
+                      </div>
+
+                      <a class="small text-muted" href="#!" data-toggle="modal" data-target="#forgotPassword" id="forgotPass">Quên mật khẩu?</a>
+                      <p class="mb-5 pb-lg-2" style="color: #393f81;">Bạn chưa có tài khoản? <a href="/register"
+                          style="color: #393f81;">Đăng ký ngay</a></p>
+                      <a href="#!" class="small text-muted">Điều khoản sử dụng.</a>
+                      <a href="#!" class="small text-muted">Quyền riêng tư</a>
+                    </form>
+
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
+      </div>
     </section>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="/js/login.js"></script>
-    <script src="/js/common.js"></script>
+    <div class="modal" tabindex="-1" id="forgotPassword">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">RESET PASSWORD</h5>
+          </div>
+          <div class="modal-body">
+            <h5 style="text-align: center;" id="verifyEmail"></h5>
+            <div class="countdown-time" id="countDown">
+              
+            </div>
+            <form action="" id="formResetPass">
+              <div class="hide-spinner" id="loading">
+                <div class="spinner-border text-info"></div>
+              </div>
+              <div class="box-input-changepass">
+                <input type="text" id="email1" placeholder="Email" name="email1">
+              </div>
+              <span class="err-inform" id="errEmail1"></span>
+
+              <div class="box-input-changepass" id="boxGetVerifyBtn">
+                <button type="submit" class="btn btn-dark" id="getVerify">VERIFY</button>
+              </div>
+            </form>
+
+            <form action="" id="mainFormResetPass" class="hide-reset-btn">
+              <div class="box-input-changepass">
+                <input type="text" id="email2" placeholder="Email" name="email2">
+              </div>
+              <span class="err-inform" id="errEmail2"></span>
+
+              <div class="box-input-changepass" id="boxVerifyCode">
+                <input type="text" id="verifyCode" placeholder="Verify Code" name="verifycode">
+              </div>
+              <span class="err-inform" id="errverifyCode"></span>
+
+              <div class="box-input-changepass" id="boxNewpassword">
+                <input type="password" id="newpassword" placeholder="New Password" name="newpassword">
+              </div>
+              <span class="err-inform" id="errNewpassword"></span>
+
+              <div class="box-input-changepass" id="boxResetBtn">
+                <button type="submit" class="btn btn-dark" id="resetBtn">RESET PASSWORD</button>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeResetBtn">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%-include ('footer')%>
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+      <script src="/js/login.js"></script>
+      <script src="/js/common.js"></script>
 </body>
+
 </html>

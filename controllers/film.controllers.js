@@ -9,7 +9,8 @@ const {GetALLFilmNowShowing,
     GetAllCinemasOfMovieInCity,
     GetAllScheduleOfMovieInCity,
     GetScheduleOfMovieByScheduleID,
-    UpdateLikeOneMovie} = require('../models/film.models');
+    UpdateLikeOneMovie,
+    GetALLFilmComingSoon} = require('../models/film.models');
 
 let findALLFilmNowShowing = async (req,res)=>{
     const films = await GetALLFilmNowShowing();
@@ -24,24 +25,25 @@ let findALLFilmNowShowing = async (req,res)=>{
                 movie_name: item.movie_name,
                 movie_length: item.movie_length,
                 movie_release: `${months[((item.movie_release)).getMonth()]} ${((item.movie_release)).getDate()} ${((item.movie_release)).getFullYear()}`, 
-                movie_like: item.movie_like
+                movie_like: item.movie_like,
+                movie_status: item.movie_status
             }
             obj.push(newObj);
             return obj;
         },[]);
         if(req.checkLogin == false){
-            return res.render('nowshowing.ejs',{data: newMoviews});
+            return res.render('nowshowing.ejs',{status: true,data: newMoviews});
         }
         else{
-            return res.render('nowshowingLogin.ejs',{data: newMoviews, username: req.username, userID: req.userID});
+            return res.render('nowshowingLogin.ejs',{status: true,data: newMoviews, username: req.username, userID: req.userID});
         }
     }
     else{
         if(req.checkLogin == false){
-            return res.render('nowshowing.ejs',{data: films});
+            return res.render('nowshowing.ejs',{status: false,data: films});
         }
         else{
-            return res.render('nowshowingLogin.ejs',{data: films, username: req.username , userID: req.userID});
+            return res.render('nowshowingLogin.ejs',{status: false,data: films, username: req.username , userID: req.userID});
         }
     }
 }
@@ -63,12 +65,14 @@ let findOneMovie = async (req,res)=>{
                 movie_director: item.movie_director,
                 movie_actor: item.movie_actor, 
                 movie_description: item.movie_description, 
-                movie_language: item.movie_language
+                movie_language: item.movie_language,
+                movie_status: item.movie_status
             }
             obj.push(newObj);
             return obj;
         },[]);
         if(req.checkLogin == false){
+            console.log(1);
             return res.render('detailMovie.ejs',{data: newMoviews, genres: req.genres, format: req.format, films: req.films});
         }
         else{
@@ -110,7 +114,41 @@ let Booking = async (req,res)=>{
         }
     }
 }
-
+let findALLFilmComingSoon = async (req,res)=>{
+    const films = await GetALLFilmComingSoon();
+    if(films.length >0){
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        let newMoviews = films.reduce((obj,item)=>{
+            let newObj ={
+                movie_id: item.movie_id,
+                rated_name: item.rated_name,
+                rated_description: item.rated_description,
+                movie_poster: item.movie_poster,
+                movie_name: item.movie_name,
+                movie_length: item.movie_length,
+                movie_release: `${months[((item.movie_release)).getMonth()]} ${((item.movie_release)).getDate()} ${((item.movie_release)).getFullYear()}`, 
+                movie_like: item.movie_like,
+                movie_status: item.movie_status
+            }
+            obj.push(newObj);
+            return obj;
+        },[]);
+        if(req.checkLogin == false){
+            return res.render('comingsoon.ejs',{status: true,data: newMoviews});
+        }
+        else{
+            return res.render('comingsoonLogin.ejs',{status: true,data: newMoviews, username: req.username, userID: req.userID});
+        }
+    }
+    else{
+        if(req.checkLogin == false){
+            return res.render('comingsoon.ejs',{status: false, data: films});
+        }
+        else{
+            return res.render('comingsoonLogin.ejs',{status: false, data: films, username: req.username , userID: req.userID});
+        }
+    }
+}
 // API
 let apiFindAllFilmNowShowing = async (req,res,next)=>{
     const films = await GetALLFilmNowShowing();
@@ -292,4 +330,5 @@ module.exports = {findALLFilmNowShowing,
     apiFindAllSchedulesOfMovieInCity,
     Booking,
     apiBookingFindOneMovie,
-    apiUpdateLikeOneMovie};
+    apiUpdateLikeOneMovie,
+    findALLFilmComingSoon};

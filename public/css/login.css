@@ -1,0 +1,42 @@
+.countdown-time{
+    text-align: center;
+    color: rgb(250, 183, 0);
+    font-size: 20px;
+}
+.box-input-changepass{
+    width:100%;
+    height: 40px;
+    margin-bottom: 10px;
+}
+#formResetPass .box-input-changepass input{
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    padding: 5px;
+}
+#formResetPass .box-input-changepass button{
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    padding: 5px;
+}
+.hide-reset-btn{
+    display: none;
+}
+
+#mainFormResetPass .box-input-changepass input{
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    padding: 5px;
+}
+#mainFormResetPass .box-input-changepass button{
+    border: 1px solid gainsboro;
+    width: 100%;
+    height: 40px;
+    border-radius: 2px;
+    padding: 5px;
+}

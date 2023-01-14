@@ -5,6 +5,8 @@
 }
 .main{
     background-color: #fdfcf0;
+    position: absolute;
+    z-index: -1;
 }
 .format-row{
     margin-left: 0px;
@@ -44,6 +46,9 @@
 .p-all-10{
     padding: 10px;
 }
+.p-all-20{
+    padding: 20px;
+}
 button{
     border: none;
     background: transparent;
@@ -56,7 +61,7 @@ li{
     margin-top:20px;
 }
 .m-b-20{
-    margin-bottom:20px;
+    margin-bottom:20px ;
 }
 .m-t-10{
     margin-top:10px;
@@ -104,6 +109,11 @@ li{
     display: flex;
     flex-direction: column;
     align-items: end;
+}
+.flex-center-x{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 /* Nav1 */
 .height-60{
@@ -178,6 +188,7 @@ li{
 a{
     cursor: pointer;
     color: black;
+    text-decoration: none;
 }
 a:hover{
     text-decoration: none;
@@ -205,7 +216,7 @@ a:hover{
     }
     #header-nav {
         display: block;
-        left: 26%;
+        left: 20%;
         position: absolute;
         top: 138px;
     }
@@ -280,7 +291,7 @@ a:hover{
     }
     #header-nav {
         display: block;
-        left: 26%;
+        left: 19%;
         position: absolute;
         top: 138px;
     }
@@ -331,7 +342,10 @@ a:hover{
     .p-r-127{
         padding-right: 3.5%;
     }
-    
+    .nav2-text-size{
+        font-size: 15px;
+        text-decoration: none;
+    }
 }
 @media (min-width: 576px) and (max-width: 767.98px){
     .box-nav3{
