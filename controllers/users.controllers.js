@@ -13,14 +13,21 @@ const {
     GetInforBookingByUserID,
     GetBookingIDByUserID,
     GetOneUserByEmail,
-    UpdatePasswordForOneUser} = require('../models/user.model');
+    UpdatePasswordForOneUser,
+    GetAllUsers} = require('../models/user.model');
 
 let path = require('path');
 let options = {
     root: path.join(__dirname, '../public')
 };
 let login = async (req, res) => {
-    return res.render('login.ejs'); 
+    if(req.checkLogin == true){
+        return res.redirect('/');
+    }
+    else{
+        return res.render('login.ejs'); 
+    }
+    
 }
 let register = async (req, res) => {
     return res.render('register.ejs'); 
@@ -68,11 +75,28 @@ let middlwareCkeckLogin = async(req,res,next)=>{
         const user = await GetOneUserByID(Number(req.session.userId));
         req.username = user[0].name;
         req.userID = user[0].id;
+        if(user[0].role == 0){
+            next()
+        }
+        else{
+            res.redirect('/login-admin');
+        }
     }
     else{
         req.checkLogin = false;
+        next();
     }
-    next();
+}
+let apiCkeckLogin = async(req,res)=>{
+    let session = req.session.userId;
+    console.log('ssid: ',session);
+    if(session){
+        return res.status(200).json({status: true});
+    }
+    else{
+        return res.status(200).json({status: false});
+    }
+    
 }
 let Logout = async(req,res)=>{
     req.session.destroy(err => {
@@ -142,6 +166,61 @@ function formatCash(str) {
         return ((index % 3) ? next : (next + ',')) + prev
     })
 }
+let middlwareCkeckLoginAdmin = async(req,res,next)=>{
+    let session = req.session.userId;
+    if(session){
+        req.checkLogin = true;
+        const user = await GetOneUserByID(Number(req.session.userId));
+        req.username = user[0].name;
+        req.userID = user[0].id;
+        if(user[0].role == 1){
+            next();
+        }
+        else{
+            res.redirect('/');
+        }
+    }
+    else{
+        req.checkLogin = false;
+        res.redirect('/login-admin');
+    }
+}
+let apiGetAllUsers = async (req,res)=>{
+    const users = await GetAllUsers();
+    if(users.length >0){
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        let newUsers = users.reduce((obj,item)=>{
+            let newObj ={
+                user_id: item.user_id,
+                user_name: item.user_name,
+                user_phone: item.user_phone,
+                user_email: item.user_email,
+                user_password: item.user_password,
+                user_dob: `${months[((item.user_dob)).getMonth()]}/${((item.user_dob)).getDate()}/${((item.user_dob)).getFullYear()}`, 
+                user_gender: item.user_gender,
+                user_city: item.user_city
+            }
+            obj.push(newObj);
+            return obj;
+        },[]);
+        return res.render('admin.ejs',{status: true,data: newUsers});
+        // if(req.checkLogin == false){
+        //     return res.render('nowshowing.ejs',{status: true,data: newMoviews});
+        // }
+        // else{
+        //     return res.render('nowshowingLogin.ejs',{status: true,data: newMoviews, username: req.username, userID: req.userID});
+        // }
+    }
+    else{
+        return res.render('admin.ejs',{status: false,data: newUsers});
+        // if(req.checkLogin == false){
+        //     return res.render('nowshowing.ejs',{status: false,data: films});
+        // }
+        // else{
+        //     return res.render('nowshowingLogin.ejs',{status: false,data: films, username: req.username , userID: req.userID});
+        // }
+    }
+}
 module.exports = {
     login,
     register,
@@ -153,4 +232,8 @@ module.exports = {
     Logout,
     apiGetOneUserByID,
     apiGetInforBookingByUserID,
-    apiGetOneUserByEmail};
+    apiGetOneUserByEmail,
+    apiGetAllUsers,
+    middlwareCkeckLoginAdmin,
+    apiCkeckLogin
+};

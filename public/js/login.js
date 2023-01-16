@@ -2,6 +2,7 @@ const apiURL1 = 'http://127.0.0.1:3000/api/v1/login';
 const apiURL_ResetPassword = 'http://127.0.0.1:3000/api/v1/reset-password';
 const apiURL_OverwritePassword = 'http://127.0.0.1:3000/api/v1/reset-update-password';
 const apiURL_DeleteToken = 'http://127.0.0.1:3000/api/v1/delete-token/';
+
 function setCookie(cname, cvalue, exdays) {
     const d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -18,7 +19,7 @@ loginForm.addEventListener('submit', (e) => {
     let borderUsername = document.getElementById('email');
     let borderPassword = document.getElementById('password');
     if (data.username == '' && data.password !== '') {
-        document.getElementById('informUsername').innerText = "Please input your username";
+        document.getElementById('informEmail').innerText = "Please input your email";
         document.getElementById('informPassword').innerText = "";
         if (borderUsername.className.indexOf('boder-err') == -1) {
             borderUsername.classList.toggle('boder-err');
@@ -28,7 +29,7 @@ loginForm.addEventListener('submit', (e) => {
         }
     }
     else if (data.username !== '' && data.password == '') {
-        document.getElementById('informUsername').innerText = "";
+        document.getElementById('informEmail').innerText = "";
         document.getElementById('informPassword').innerText = "Please input your password";
         if (borderUsername.className.indexOf('boder-err') != -1) {
             borderUsername.classList.toggle('boder-err');
@@ -38,7 +39,7 @@ loginForm.addEventListener('submit', (e) => {
         }
     }
     else if (data.username == '' && data.password == '') {
-        document.getElementById('informUsername').innerText = "Please input your username";
+        document.getElementById('informEmail').innerText = "Please input your email";
         document.getElementById('informPassword').innerText = "Please input your password";
         if (borderUsername.className.indexOf('boder-err') == -1) {
             borderUsername.classList.toggle('boder-err');
@@ -63,6 +64,7 @@ loginForm.addEventListener('submit', (e) => {
         fetch(apiURL1, postMethod)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (spinner.className.indexOf('hide-spinner') == -1) {
                     spinner.classList.toggle('hide-spinner');
                     spinner.classList.toggle('show-spinner');
@@ -81,7 +83,7 @@ loginForm.addEventListener('submit', (e) => {
                     }
                 }
                 else {
-                    window.location.href = '/NowShowing';
+                    window.location.href = '/';
                 }
             })
             .catch(err => {
@@ -184,7 +186,7 @@ forgotPass.addEventListener('submit',(e)=>{
                     }
                     document.getElementById('verifyEmail').innerText = data.message;
                     document.getElementById('email2').value = result.email;
-                    var min = 10;
+                    var min = 0;
                     var sec = 60;
                     var x = setInterval(function () {
                         if (sec == 0 && min > 0) {
@@ -206,6 +208,20 @@ forgotPass.addEventListener('submit',(e)=>{
                         if (sec < 0) {
                             clearInterval(x);
                             document.getElementById("countDown").innerText = "EXPIRED";
+                            const deleteMethod ={
+                                method: "DELETE",
+                                headers: {
+                                    "Content-Type": "application/json"
+                                }
+                            }
+                            fetch(apiURL_DeleteToken + `${result.email}`,deleteMethod)
+                            .then(res=>res.json())
+                            .then((data)=>{
+                                console.log(data);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
                         }
                     }, 1000);
                     
@@ -216,7 +232,6 @@ forgotPass.addEventListener('submit',(e)=>{
                         mainForm.classList.toggle('hide-reset-btn');
                     }
                     document.getElementById('closeResetBtn').addEventListener('click',()=>{
-                        console.log(1);
                         clearInterval(x);
                         const deleteMethod ={
                             method: "DELETE",
@@ -258,6 +273,7 @@ mainForm.addEventListener('submit',(e)=>{
         code: mainForm.verifycode.value,
         newpassword: mainForm.newpassword.value
     }
+    console.log(data);
     let borderEmail = document.getElementById('email2');
     let borderCode = document.getElementById('verifyCode');
     let borderNewpassword = document.getElementById('newpassword');
@@ -280,6 +296,7 @@ mainForm.addEventListener('submit',(e)=>{
         fetch(apiURL_OverwritePassword, postMethod)
             .then(res => res.json())
             .then(data => {
+                console.log(data);
                 if (spinner.className.indexOf('hide-spinner') == -1) {
                     spinner.classList.toggle('hide-spinner');
                     spinner.classList.toggle('show-spinner');
@@ -296,10 +313,52 @@ mainForm.addEventListener('submit',(e)=>{
                         borderCode.classList.toggle('boder-err');
                     } 
                 }
-                window.location.href = '/logout';
+                if(data.status == 2){
+                    window.location.href = '/login';
+                }
             })
             .catch(err => {
                 console.log(err);
             })
+    }
+})
+
+const apiURL_CheckLogin = 'http://127.0.0.1:3000/api/v1/check-login-user';
+fetch(apiURL_CheckLogin)
+    .then(res=>res.json())
+    .then((data)=>{
+        console.log( window.location.href);
+        console.log(data);
+        if(data.status == true){
+            window.location.href = '/'
+        }
+});
+
+// ================== Strat show and hide password=====================//
+document.getElementById('show-password').addEventListener('click', () => {
+    var x = document.querySelector(".ip-pass");
+    var eye = document.getElementById('show-password');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
+    }
+})
+
+document.getElementById('show-new-password').addEventListener('click', () => {
+    var x = document.querySelector(".ip-new-password");
+    var eye = document.getElementById('show-new-password');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
     }
 })

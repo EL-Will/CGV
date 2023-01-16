@@ -1,4 +1,4 @@
-var myCarousel = document.querySelector('#carouselExampleDark')
+var myCarousel = document.querySelector('#carouselExampleIndicators')
 var carousel = new bootstrap.Carousel(myCarousel, {
   interval: 2000,
   wrap: true

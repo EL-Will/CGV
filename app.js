@@ -3,17 +3,19 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const {configViewEngine} = require('./config/setViewEngine');
 const {initWebRoute} = require('./routes/users.routes');
+const {initWebRouteAdmin} = require('./routes/admin.routes');
 const {sessionStore} = require('./config/connectMySQL');
 const session = require('express-session');
 const MySQLStore = require('express-mysql-session')(session);
 const morgan = require('morgan');
 const cookieParser = require('cookie-parser');
-
+var cors = require('cors');
 
 dotenv.config();
 const app = express();
 const port = process.env.PORT || 3000;
-const TWO_HOURS = 1000 * 60 * 60 * 10
+const TWO_HOURS = 1000 * 60 * 60 * 10;
+app.use(cors());
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
@@ -28,9 +30,9 @@ app.use(session({
         secure: false
     }
 }))
-
 configViewEngine(app);
 initWebRoute(app);
+initWebRouteAdmin(app);
 app.listen(port,()=>{
     console.log(`Example app listening at http://127.0.0.1:${port}`)
 })

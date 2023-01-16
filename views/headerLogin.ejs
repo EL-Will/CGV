@@ -160,12 +160,12 @@
     <nav id="nav">
         <ol class="nav-primary">
             <li class="level0 nav-5">
-                <a href="#" class="level0">
+                <a href="/profile/<%=userID%>" class="level0">
                     PROFILE
                 </a>
             </li>
             <li class="level0 nav-6">
-                <a href="#" class="level0">
+                <a href="#" class="level0" data-toggle="modal" data-target="#changePassword">
                     CHANGE PASSWORD
                 </a>
             </li>
@@ -210,16 +210,19 @@
                     <input type="text" id="email" placeholder="Email" name="email">      
                 </div>
                 <span class="err-inform" id="errEmail"></span>
-                <div class="box-input-changepass">
+                <div class="box-input-changepass pos-relative">
                     <input type="password" id="currentPassword" placeholder="Current Password" name="currentPassword">                   
+                    <i class="fa-solid fa-eye-slash fixed-eye" id="show-current-password-change"></i>
                 </div>
                 <span class="err-inform" id="errCurrentPassword"></span>
-                <div class="box-input-changepass">
+                <div class="box-input-changepass pos-relative">
                     <input type="password" id="newPassword" placeholder="New Password" name="newPassword">                   
+                    <i class="fa-solid fa-eye-slash fixed-eye" id="show-new-password-change"></i>
                 </div>
                 <span class="err-inform" id="errNewPassword"></span>
-                <div class="box-input-changepass">
+                <div class="box-input-changepass pos-relative">
                     <input type="password" id="confirmPassword" placeholder="Confirm Password" name="confirmPassword">                    
+                    <i class="fa-solid fa-eye-slash fixed-eye" id="show-confirm-password-change"></i>
                 </div>
                 <span class="err-inform" id="errConfirmPassword"></span>
                 <div class="box-input-changepass">

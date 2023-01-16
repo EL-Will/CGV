@@ -50,9 +50,10 @@
                         <span class="err-inform" id="informEmail"></span>
                       </div>
 
-                      <div class="form-outline mb-4">
-                        <input type="password" id="password" class="form-control form-control-lg" name="password"
+                      <div class="form-outline mb-4 pos-relative">
+                        <input type="password" id="password" class="form-control form-control-lg ip-pass" name="password"
                           placeholder="Password" />
+                        <i class="fa-solid fa-eye-slash fixed-eye" id="show-password"></i>
                         <span class="err-inform" id="informPassword"></span>
                       </div>
 
@@ -111,8 +112,9 @@
               </div>
               <span class="err-inform" id="errverifyCode"></span>
 
-              <div class="box-input-changepass" id="boxNewpassword">
-                <input type="password" id="newpassword" placeholder="New Password" name="newpassword">
+              <div class="box-input-changepass pos-relative" id="boxNewpassword">
+                <input type="password" id="newpassword" class="ip-new-password" placeholder="New Password" name="newpassword">
+                <i class="fa-solid fa-eye-slash fixed-eye" id="show-new-password"></i>
               </div>
               <span class="err-inform" id="errNewpassword"></span>
 

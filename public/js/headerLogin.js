@@ -130,3 +130,45 @@ changepassForm.addEventListener('submit',(e)=>{
             })
     }
 })
+
+document.getElementById('show-current-password-change').addEventListener('click', () => {
+    var x = document.querySelector("#currentPassword");
+    var eye = document.getElementById('show-current-password-change');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
+    }
+})
+
+document.getElementById('show-new-password-change').addEventListener('click', () => {
+    var x = document.querySelector("#newPassword");
+    var eye = document.getElementById('show-new-password-change');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
+    }
+})
+
+document.getElementById('show-confirm-password-change').addEventListener('click', () => {
+    var x = document.querySelector("#confirmPassword");
+    var eye = document.getElementById('show-confirm-password-change');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
+    }
+})

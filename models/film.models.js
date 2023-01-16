@@ -141,7 +141,22 @@ async function UpdateLikeOneMovie(id,like){
     WHERE tbl_movies.movie_id = ${id}`);
     return rows;
 }
-module.exports = {GetALLFilmNowShowing,
+
+async function GetAllFilms(){
+    const [rows] =await pool.query(`
+    SELECT tbl_movies.movie_id, tbl_rated.rated_name, 
+    tbl_rated.rated_description, tbl_movies.movie_poster, 
+    tbl_movies.movie_name, tbl_movies.movie_length, 
+    tbl_movies.movie_release, tbl_movies.movie_like, 
+    tbl_movies.movie_poster2, tbl_movies.movie_status,
+    tbl_movies.movie_description, tbl_movies.movie_language
+    FROM tbl_rated
+    JOIN tbl_movies ON tbl_rated.rated_id = tbl_movies.movie_rated
+    ORDER BY tbl_movies.movie_id ASC`);
+    return rows;
+}
+module.exports = {
+    GetALLFilmNowShowing,
     GetOneMovie,
     GetGenreOfOneMovie,
     GetFormatOfOneMovie,
@@ -152,4 +167,5 @@ module.exports = {GetALLFilmNowShowing,
     GetAllScheduleOfMovieInCity,
     GetScheduleOfMovieByScheduleID,
     UpdateLikeOneMovie,
-    GetALLFilmComingSoon}
+    GetALLFilmComingSoon,
+    GetAllFilms}

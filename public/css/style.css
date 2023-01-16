@@ -194,6 +194,22 @@ a:hover{
     text-decoration: none;
     color: #828282;
 }
+/* show password */
+.pos-relative{
+    position: relative;
+}
+.fixed-eye{
+    position: absolute;
+    top: 36%;
+    right: 5%;
+    cursor: pointer;
+}
+.fixed-eye-register{
+    position: absolute;
+    top: 29%;
+    right: 5%;
+    cursor: pointer;
+}
 @media (min-width: 992px){
     .page-header {
         width: 100%;

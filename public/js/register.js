@@ -177,3 +177,31 @@ registerForm.addEventListener('submit', (e) => {
             })
     }
 })
+
+document.getElementById('show-password-register').addEventListener('click', () => {
+    var x = document.querySelector("#password");
+    var eye = document.getElementById('show-password-register');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
+    }
+})
+
+document.getElementById('show-confirm-password-register').addEventListener('click', () => {
+    var x = document.querySelector("#confirmpassword");
+    var eye = document.getElementById('show-confirm-password-register');
+    eye.removeAttribute("class");
+    if (x.type === "password") {
+        x.type = "text";
+        eye.setAttribute("class", 'fa-solid fa-eye fixed-eye');
+
+    } else {
+        x.type = "password";
+        eye.setAttribute("class", 'fa-solid fa-eye-slash fixed-eye');
+    }
+})

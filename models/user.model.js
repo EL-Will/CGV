@@ -6,6 +6,12 @@ async function GetInforUser(){
     FROM tbl_users`);
     return rows;
 }
+async function GetAllUsers(){
+    const [rows] =await pool.query(`
+    SELECT *
+    FROM tbl_users`);
+    return rows;
+}
 async function SetInforUser(arr){
     const [result] = await pool.execute(`
     INSERT INTO tbl_users 
@@ -15,7 +21,7 @@ async function SetInforUser(arr){
 }
 async function GetOneUser(arr){
     const [rows] = await pool.query(`
-    SELECT tbl_users.user_id AS id, tbl_users.user_name AS name, tbl_users.user_password AS password 
+    SELECT tbl_users.user_id AS id, tbl_users.user_name AS name, tbl_users.user_password AS password, tbl_users.user_role AS role 
     FROM tbl_users
     WHERE user_email=?`,arr);
     return rows;
@@ -29,7 +35,8 @@ async function GetOneUserByID(arr){
     tbl_users.user_email AS email,
     tbl_users.user_dob AS dob,
     tbl_users.user_gender AS gender,
-    tbl_users.user_city AS city
+    tbl_users.user_city AS city,
+    tbl_users.user_role AS role
     FROM tbl_users
     WHERE user_id=?`,arr);
     return rows;
@@ -76,4 +83,5 @@ module.exports = {
     GetInforBookingByUserID,
     GetBookingIDByUserID,
     GetOneUserByEmail,
-    UpdatePasswordForOneUser};
+    UpdatePasswordForOneUser,
+    GetAllUsers};

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+
+<body>
+    <!-- <h1><%=data%></h1> -->
+    <div class="topnav">
+        <a href="/admin-user">Users</a>
+        <a class="active" href="/admin-films">Films</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
+    <div style="padding-left:16px; padding-right:16px">
+        <h2>List Films</h2>
+        <table id="customers">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Release</th>
+                <th>Language</th>
+                <th>Status</th>
+                <!-- <th>Date Of Birth</th>
+                <th>Gender</th>
+                <th>Address</th> -->
+                <th>Action</th>
+            </tr>
+            <%for(let i=0; i< data.length; i++){%>
+                <tr>
+                    <td>
+                        <%=data[i].movie_id%>
+                    </td>
+                    <td>
+                        <%=data[i].movie_name%>
+                    </td>
+                    <td>
+                        <%=data[i].movie_description%>
+                    </td>
+                    <td>
+                        <%=data[i].movie_release%>
+                    </td>
+                    <td>
+                        <%=data[i].movie_language%>
+                    </td>
+                    <td>
+                        <%=data[i].movie_status%>
+                    </td>
+                    <!-- <td>
+                        <%=data[i].user_dob%>
+                    </td>
+                    <td>
+                        <%=data[i].user_gender%>
+                    </td>
+                    <td>
+                        <%=data[i].user_city%>
+                    </td> -->
+                    <td class="box-crud">
+                        <a href="detail/user/<%=data[i].movie_id%>" class="detail-btn">Detail</a>
+                        <form action="/delete-user" method="post">
+                            <input type="text" hidden value="<%=data[i].movie_id%>" name="userId">
+                            <button type="submit" class="delete-btn">Delete</button>
+                        </form>
+                        <form action="/edit-user/<%=data[i].movie_id%>" method="get">
+                            <button type="submit" class="edit-btn">Edit</button>
+                        </form>
+                        
+                    </td>
+                </tr>
+                <%}%>
+
+        </table>
+
+        <div class="form-user">
+            <form action="/creat-new-user" method="post">
+                <div class="box-inforuser">
+                    <span><strong>First Name</strong></span>
+                    <br>
+                    <input type="text" placeholder="First Name" name="firstname">
+                </div>
+                <div class="box-inforuser">
+                    <span><strong>Last Name</strong></span>
+                    <br>
+                    <input type="text" placeholder="Last Name" name="lastname">
+                </div>
+                <div class="box-inforuser">
+                    <span><strong>Email</strong></span>
+                    <br>
+                    <input type="email" placeholder="Email" required name="email">
+                </div>
+                <div class="box-inforuser">
+                    <span><strong>Address</strong></span>
+                    <br>
+                    <input type="text" placeholder="Address" name="address">
+                </div>
+                <div class="box-submit-btn">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

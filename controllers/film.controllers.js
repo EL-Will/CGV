@@ -10,7 +10,8 @@ const {GetALLFilmNowShowing,
     GetAllScheduleOfMovieInCity,
     GetScheduleOfMovieByScheduleID,
     UpdateLikeOneMovie,
-    GetALLFilmComingSoon} = require('../models/film.models');
+    GetALLFilmComingSoon,
+    GetAllFilms} = require('../models/film.models');
 
 let findALLFilmNowShowing = async (req,res)=>{
     const films = await GetALLFilmNowShowing();
@@ -316,7 +317,43 @@ let apiUpdateLikeOneMovie = async (req,res)=>{
     console.log(like);
     return res.status(200).json({status: true});
 }
-
+let apiGetAllFilms = async (req,res)=>{
+    const films = await GetAllFilms();
+    if(films.length >0){
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        let newMoviews = films.reduce((obj,item)=>{
+            let str_status = '';
+            if(item.movie_status == 1){
+                str_status = 'Now showing';
+            }
+            else if(item.movie_status == 2){
+                str_status = 'Comming soon';
+            }
+            else{
+                str_status = 'Stop showing';
+            }
+            let newObj ={
+                movie_id: item.movie_id,
+                rated_name: item.rated_name,
+                rated_description: item.rated_description,
+                movie_poster: item.movie_poster,
+                movie_name: item.movie_name,
+                movie_length: item.movie_length,
+                movie_release: `${months[((item.movie_release)).getMonth()]} ${((item.movie_release)).getDate()} ${((item.movie_release)).getFullYear()}`, 
+                movie_like: item.movie_like,
+                movie_status: str_status,
+                movie_description: item.movie_description,
+                movie_language: item.movie_language
+            }
+            obj.push(newObj);
+            return obj;
+        },[])
+        return res.render('adminFilms.ejs',{status: true,data: newMoviews});
+    }
+    else{
+        return res.render('adminFilms.ejs',{status: false, data: films}); 
+    }
+}
 module.exports = {findALLFilmNowShowing,
     findOneMovie,
     findGenreOfOneMovie,
@@ -331,4 +368,5 @@ module.exports = {findALLFilmNowShowing,
     Booking,
     apiBookingFindOneMovie,
     apiUpdateLikeOneMovie,
-    findALLFilmComingSoon};
+    findALLFilmComingSoon,
+    apiGetAllFilms};
