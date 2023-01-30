@@ -73,7 +73,6 @@ let findOneMovie = async (req,res)=>{
             return obj;
         },[]);
         if(req.checkLogin == false){
-            console.log(1);
             return res.render('detailMovie.ejs',{data: newMoviews, genres: req.genres, format: req.format, films: req.films});
         }
         else{
@@ -314,7 +313,6 @@ let apiBookingFindOneMovie = async (req,res,next)=>{
 }
 let apiUpdateLikeOneMovie = async (req,res)=>{
     const like = await UpdateLikeOneMovie(Number(req.params.id),req.body.movie_like);
-    console.log(like);
     return res.status(200).json({status: true});
 }
 let apiGetAllFilms = async (req,res)=>{

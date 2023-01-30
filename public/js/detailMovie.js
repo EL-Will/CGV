@@ -163,7 +163,7 @@ else {
                         e.target.classList.toggle('current');
                         let idSolution = e.target.id;
                         let schedules = JSON.parse(JSON.stringify(await fetch(apiURL3 + `${id}/date/${dateShowing}/solution/${idSolution}/city/${city}`).then((res) => res.json())));
-                        console.log(schedules);
+                        
                         renderSchedule(schedules.cinemas, schedules.schedules)
                     })
                 }
@@ -173,7 +173,6 @@ else {
 }
 
 document.getElementById('chooseSchedule').addEventListener('click', async (e) => {
-    console.log(e.target);
     if (e.target.className.indexOf('format-btn-solution') != -1) {
         let path = window.location.pathname;
         let movieID = Number(path.slice(14));

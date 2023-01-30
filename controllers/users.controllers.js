@@ -89,7 +89,6 @@ let middlwareCkeckLogin = async(req,res,next)=>{
 }
 let apiCkeckLogin = async(req,res)=>{
     let session = req.session.userId;
-    console.log('ssid: ',session);
     if(session){
         return res.status(200).json({status: true});
     }
@@ -101,11 +100,10 @@ let apiCkeckLogin = async(req,res)=>{
 let Logout = async(req,res)=>{
     req.session.destroy(err => {
         if(err){
-            console.log(1);
-            return res.redirect('/NowShowing');
+            return res.redirect('/login');
         }
         sessionStore.close();
-        return res.redirect('/NowShowing');
+        return res.redirect('/login');
     })
 }
 let apiGetOneUserByID = async(req,res)=>{
@@ -114,6 +112,16 @@ let apiGetOneUserByID = async(req,res)=>{
     let dob = `${months[((user[0].dob)).getMonth()]}/${((user[0].dob)).getDate()}/${((user[0].dob)).getFullYear()}`
     user[0].dob = dob;
     return res.render('profile.ejs',{user: user, username: user[0].name, userID: user[0].id , booking: req.booking});
+}
+let apiGetOneUserByUid = async(req,res)=>{
+    const user = await GetOneUserByID(Number(req.params.uid));
+    if(user.length >0){
+        return res.status(200).json({status: 1, user: user})
+    }
+    else{
+        return res.status(200).json({status: 0})
+    }
+    
 }
 let apiGetInforBookingByUserID = async(req,res,next)=>{
     const bookingInfor = await GetInforBookingByUserID(Number(req.params.uid));
@@ -144,14 +152,13 @@ let apiGetInforBookingByUserID = async(req,res,next)=>{
 }
 let apiGetOneUserByEmail = async(req,res)=>{
     const user = await GetOneUserByEmail(req.params.email);
-    if(user.length >0){
+    if(user.length >0 && user[0].id == Number(req.params.uid)){
         let {currentPass, newPass} =req.body;
         const isValid = await bcrypt.compare(currentPass, user[0].password);
         if(!isValid){
             return res.status(200).json({status: 1, message: "Password incorrect"});
         }
         else{
-            console.log(3);
             const hash = await bcrypt.hash(newPass,13);
             const result = await UpdatePasswordForOneUser(req.params.email,hash);
             return res.status(200).json({status: 2});
@@ -235,5 +242,6 @@ module.exports = {
     apiGetOneUserByEmail,
     apiGetAllUsers,
     middlwareCkeckLoginAdmin,
-    apiCkeckLogin
+    apiCkeckLogin,
+    apiGetOneUserByUid
 };

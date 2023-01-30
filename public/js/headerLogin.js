@@ -61,8 +61,9 @@ document.getElementById('email').addEventListener('input',()=>{
 })
 
 let changepassForm = document.getElementById('formChangePass');
-changepassForm.addEventListener('submit',(e)=>{
+changepassForm.addEventListener('submit',async (e)=>{
     e.preventDefault();
+    let uid = Number(document.getElementById('gotoProfile').dataset.uid);
     const data ={
         email: changepassForm.email.value,
         currentPass: changepassForm.currentPassword.value,
@@ -84,7 +85,17 @@ changepassForm.addEventListener('submit',(e)=>{
             borderconfirmPassword.classList.toggle('boder-err');
         } 
     }
+    // if(inforUser.status == 1){
+    //     if(data.email != inforUser[0].email){
+    //         document.getElementById('errConfirmPassword').innerText = 'Confirm password incorrect';
+    //         if (borderconfirmPassword.className.indexOf('boder-err') == -1) {
+    //             borderconfirmPassword.classList.toggle('boder-err');
+    //         } 
+    //     }
+    // }
+    // else{
 
+    // }
     if(data.email != '' && data.currentPass != ''
     && data.newPass != '' && data.confirmPass != ''
     && data.newPass == data.confirmPass){
@@ -104,7 +115,7 @@ changepassForm.addEventListener('submit',(e)=>{
             },
             body: JSON.stringify(newPass)
         };
-        fetch(apiURL_ChangePassword + `${data.email}`, putMethod)
+        fetch(apiURL_ChangePassword + `${data.email}/uid/${uid}`, putMethod)
             .then(res => res.json())
             .then(data => {
                 if (spinner.className.indexOf('hide-spinner') == -1) {
@@ -123,7 +134,10 @@ changepassForm.addEventListener('submit',(e)=>{
                         borderCurrentPassword.classList.toggle('boder-err');
                     } 
                 }
-                window.location.href = '/logout';
+                if(data.status == 2){
+                    window.location.href = '/logout';
+                }
+                
             })
             .catch(err => {
                 console.log(err);

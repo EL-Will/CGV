@@ -219,7 +219,7 @@ document.getElementById('renderSeats').addEventListener('click', (e) => {
 
 document.getElementById('btnCheckout').addEventListener('click', () => {
     if (seatID.length == 0) {
-        console.log(1);
+        
         document.getElementById('modalBody').innerText = "Vui lòng chọn ghế";
     }
     else {

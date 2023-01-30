@@ -1,6 +1,7 @@
 const {
     loginAdmin,
-    findOneUserAdmin
+    findOneUserAdmin,
+    Logout
 } = require('../controllers/admin.controllers')
 const {
     apiGetAllUsers,
@@ -16,7 +17,7 @@ let router = express.Router();
 const initWebRouteAdmin = (app) => {
     // directly page
     router.get('/login-admin', loginAdmin);
-
+    router.get('/logout-admin',Logout);
     // Call API
     router.post('/api/v1/login-admin',findOneUserAdmin)
     // Admin //

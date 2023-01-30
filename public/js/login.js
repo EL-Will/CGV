@@ -64,7 +64,6 @@ loginForm.addEventListener('submit', (e) => {
         fetch(apiURL1, postMethod)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (spinner.className.indexOf('hide-spinner') == -1) {
                     spinner.classList.toggle('hide-spinner');
                     spinner.classList.toggle('show-spinner');
@@ -217,7 +216,6 @@ forgotPass.addEventListener('submit',(e)=>{
                             fetch(apiURL_DeleteToken + `${result.email}`,deleteMethod)
                             .then(res=>res.json())
                             .then((data)=>{
-                                console.log(data);
                             })
                             .catch(err => {
                                 console.log(err);
@@ -242,7 +240,6 @@ forgotPass.addEventListener('submit',(e)=>{
                         fetch(apiURL_DeleteToken + `${result.email}`,deleteMethod)
                         .then(res=>res.json())
                         .then((data)=>{
-                            console.log(data);
                         })
                         .catch(err => {
                             console.log(err);
@@ -273,7 +270,6 @@ mainForm.addEventListener('submit',(e)=>{
         code: mainForm.verifycode.value,
         newpassword: mainForm.newpassword.value
     }
-    console.log(data);
     let borderEmail = document.getElementById('email2');
     let borderCode = document.getElementById('verifyCode');
     let borderNewpassword = document.getElementById('newpassword');
@@ -296,7 +292,6 @@ mainForm.addEventListener('submit',(e)=>{
         fetch(apiURL_OverwritePassword, postMethod)
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (spinner.className.indexOf('hide-spinner') == -1) {
                     spinner.classList.toggle('hide-spinner');
                     spinner.classList.toggle('show-spinner');
@@ -327,8 +322,6 @@ const apiURL_CheckLogin = 'http://127.0.0.1:3000/api/v1/check-login-user';
 fetch(apiURL_CheckLogin)
     .then(res=>res.json())
     .then((data)=>{
-        console.log( window.location.href);
-        console.log(data);
         if(data.status == true){
             window.location.href = '/'
         }

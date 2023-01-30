@@ -1,50 +1,48 @@
-<div class="main row format-row bgr-color-white p-t-5">
+<div class="row format-row bgr-color-white p-t-5">
     <%if(status == false){%>
-        
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-c-127 p-r-c-127 flex-center-x">
-                <img src="/image/no-products.svg" alt="No Products" style="height: 300px;">
-            </div>
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-c-127 p-r-c-127" style="text-align: center;">
-                <h5>Oops! We can't seem to find the MOVIES</h5>
-            </div>
-    <%}%>
-    
-            <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-c-127 p-r-c-127">
-                <div class="grid-4-img">
-                    <%for(let i=0; i< data.length; i++){%>
-                    <div class="row format-row">
-                        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
-                            <div class="box-film">
-                                <%if(data[i].rated_name == "C13"){%>
-                                    <span class="nmovie-rating nmovie-rating-c13"><%=data[i].rated_name%></span>
-                                <%} else if(data[i].rated_name == "C16") {%>
-                                    <span class="nmovie-rating nmovie-rating-c16"><%=data[i].rated_name%></span>
-                                <%} else if(data[i].rated_name == "C18") {%>
-                                    <span class="nmovie-rating nmovie-rating-c18"><%=data[i].rated_name%></span>
-                                <%} else {%>
-                                    <span class="nmovie-rating nmovie-rating-p"><%=data[i].rated_name%></span>
-                                <%}%>
-                                <div class="pos-center-img">
-                                    <img src="<%=data[i].movie_poster%>" class="img-fluid product-image" id="<%=data[i].movie_id%>" alt="<%=data[i].movie_name%>">
-                                </div>
-                                <h5 class="movie_name"><%=data[i].movie_name%></h5>
-                                <span><strong>Running Time: </strong><%=data[i].movie_length%></span>
-                                <br>
-                                <span><strong>Release Date: </strong><%=(data[i].movie_release).toString()%></span>
-                                <div class="flex-like-booking">
-                                    <button class="btn-like" id="<%=data[i].movie_id%>">
-                                        <i class="fa-regular fa-thumbs-up size-like"></i>
-                                        <span class="txt-like">Like <%=data[i].movie_like%></span>
-                                    </button>
-                                    <button class="btn-booking" id="<%=data[i].movie_id%>">Booking</button>
-                                </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-c-127 p-r-c-127 flex-center-x">
+            <img src="/image/no-products.svg" alt="No Products" style="height: 300px;">
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-c-127 p-r-c-127" style="text-align: center;">
+            <h5>Oops! We can't seem to find the MOVIES</h5>
+        </div>
+    <%} else{%>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 p-l-c-127 p-r-c-127">
+            <div class="grid-4-img">
+                <%for(let i=0; i< data.length; i++){%>
+                <div class="row format-row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
+                        <div class="box-film">
+                            <%if(data[i].rated_name == "C13"){%>
+                                <span class="nmovie-rating nmovie-rating-c13"><%=data[i].rated_name%></span>
+                            <%} else if(data[i].rated_name == "C16") {%>
+                                <span class="nmovie-rating nmovie-rating-c16"><%=data[i].rated_name%></span>
+                            <%} else if(data[i].rated_name == "C18") {%>
+                                <span class="nmovie-rating nmovie-rating-c18"><%=data[i].rated_name%></span>
+                            <%} else {%>
+                                <span class="nmovie-rating nmovie-rating-p"><%=data[i].rated_name%></span>
+                            <%}%>
+                            <div class="pos-center-img">
+                                <img src="<%=data[i].movie_poster%>" class="img-fluid product-image" id="<%=data[i].movie_id%>" alt="<%=data[i].movie_name%>">
+                            </div>
+                            <h5 class="movie_name"><%=data[i].movie_name%></h5>
+                            <span><strong>Running Time: </strong><%=data[i].movie_length%></span>
+                            <br>
+                            <span><strong>Release Date: </strong><%=(data[i].movie_release).toString()%></span>
+                            <div class="flex-like-booking">
+                                <button class="btn-like" id="<%=data[i].movie_id%>">
+                                    <i class="fa-regular fa-thumbs-up size-like"></i>
+                                    <span class="txt-like">Like <%=data[i].movie_like%></span>
+                                </button>
+                                <button class="btn-booking" id="<%=data[i].movie_id%>">Booking</button>
                             </div>
                         </div>
                     </div>
-                    <%}%>
                 </div>
+                <%}%>
             </div>
-    
+        </div>
+    <%}%>
     <!-- <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 padding-0">
         <div class="buffer-line"></div>
     </div> -->

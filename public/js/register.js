@@ -59,7 +59,6 @@ Email.addEventListener('input', () => {
 })
 let Phone = document.getElementById('phone');
 Phone.addEventListener('input', () => {
-    console.log(Phone.value);
     if (isVietnamesePhoneNumber(Phone.value) == false) {
         document.getElementById('errPhone').innerText = "Please enter the correct phone number";
         if (Phone.className.indexOf('boder-err') == -1) {

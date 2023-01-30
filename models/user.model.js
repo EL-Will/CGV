@@ -63,7 +63,7 @@ async function GetBookingIDByUserID(uid){
 }
 async function GetOneUserByEmail(email){
     const [rows] = await pool.query(`
-    SELECT tbl_users.user_password AS password 
+    SELECT tbl_users.user_password AS password, tbl_users.user_id AS id
     FROM tbl_users
     WHERE user_email='${email}'`);
     return rows;

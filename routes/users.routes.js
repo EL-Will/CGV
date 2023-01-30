@@ -11,7 +11,8 @@ const {login,
     apiGetOneUserByEmail,
     apiGetAllUsers,
     middlwareCkeckLoginAdmin,
-    apiCkeckLogin
+    apiCkeckLogin,
+    apiGetOneUserByUid
 } = require('../controllers/users.controllers');
 
 const {findALLFilmNowShowing,
@@ -70,6 +71,7 @@ const initWebRoute = (app) => {
     router.get('/api/v1/get-solutions/:city/movie/:id',apiFindAllSolutionOfMovieInCity);
     router.get('/api/v1/get-cinemas-schedules/:movieID/date/:date/solution/:solution/city/:city',apiFindAllCinemasOfMovieInCity,apiFindAllSchedulesOfMovieInCity);
     router.get('/api/v1/check-login-user',apiCkeckLogin);
+    router.get('/api/v1/get-infor-user/:uid',apiGetOneUserByUid);
 
     router.post('/api/v1/create-user',middlewareGetInforUser,middlewareCheckExistsInforUser,CreateUser);
     router.post('/api/v1/login',findOneUser);
@@ -84,7 +86,7 @@ const initWebRoute = (app) => {
     // booking
     router.get('/api/v1/booking/:uid',apiGetInforBookingByUserID,apiGetOneUserByID);
     // change password
-    router.put('/api/v1/change-password/:email',apiGetOneUserByEmail);
+    router.put('/api/v1/change-password/:email/uid/:uid',apiGetOneUserByEmail);
     // reset password
     router.post('/api/v1/reset-password',VerifyPassword);
     router.post('/api/v1/reset-update-password',apiUpdatePasswordByEmail);

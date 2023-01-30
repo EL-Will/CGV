@@ -6,11 +6,10 @@ async function checkLogin(){
             .then(res=>res.json())
         )
     );
-    console.log(data);
-    console.log(window.location.href);
+    
     if(data.status == true){
         let href = window.location.href
-        console.log(href);
+        
         if(href == 'http://127.0.0.1:3000/NowShowing'){
             window.location.href = '/NowShowing';
         }

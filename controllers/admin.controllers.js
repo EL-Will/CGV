@@ -34,13 +34,24 @@ let findOneUserAdmin = async (req, res) => {
     if(!isValid){
         return res.status(200).json({status: 1, message: "Password incorrect"});
     }
-    req.session.userId = user[0].id;
+    
     if(user[0].role != 1){
         return res.status(200).json({status: 2});
     }
+    req.session.userId = user[0].id;
     return res.status(200).json({status: 3});
+}
+let Logout = async(req,res)=>{
+    req.session.destroy(err => {
+        if(err){
+            return res.redirect('/login-admin');
+        }
+        sessionStore.close();
+        return res.redirect('/login-admin');
+    })
 }
 module.exports = {
     loginAdmin,
-    findOneUserAdmin
+    findOneUserAdmin,
+    Logout
 }

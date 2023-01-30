@@ -7,7 +7,6 @@ loginForm.addEventListener('submit', (e) => {
         email: loginForm.email.value,
         password: loginForm.password.value
     };
-    console.log(data);
     let borderemail = document.getElementById('email');
     let borderPassword = document.getElementById('password');
     if (data.email == '' && data.password !== '') {
@@ -59,8 +58,7 @@ loginForm.addEventListener('submit', (e) => {
         };
         fetch(apiURL_Post_Login_Admin, postMethod)
             .then(res => res.json())
-            .then(data => {
-                console.log(data);
+            .then((data) => {
                 if (spinner.className.indexOf('hide-spinner') == -1) {
                     spinner.classList.toggle('hide-spinner');
                     spinner.classList.toggle('show-spinner');
