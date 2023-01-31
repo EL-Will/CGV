@@ -75,12 +75,7 @@ let middlwareCkeckLogin = async(req,res,next)=>{
         const user = await GetOneUserByID(Number(req.session.userId));
         req.username = user[0].name;
         req.userID = user[0].id;
-        if(user[0].role == 0){
-            next()
-        }
-        else{
-            res.redirect('/login-admin');
-        }
+        next()
     }
     else{
         req.checkLogin = false;
@@ -184,7 +179,7 @@ let middlwareCkeckLoginAdmin = async(req,res,next)=>{
             next();
         }
         else{
-            res.redirect('/');
+            res.redirect('/login-admin');
         }
     }
     else{
@@ -197,6 +192,10 @@ let apiGetAllUsers = async (req,res)=>{
     if(users.length >0){
         const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
         let newUsers = users.reduce((obj,item)=>{
+            let role = 'user';
+            if(item.user_role == 1){
+                role = 'admin';
+            }
             let newObj ={
                 user_id: item.user_id,
                 user_name: item.user_name,
@@ -205,27 +204,18 @@ let apiGetAllUsers = async (req,res)=>{
                 user_password: item.user_password,
                 user_dob: `${months[((item.user_dob)).getMonth()]}/${((item.user_dob)).getDate()}/${((item.user_dob)).getFullYear()}`, 
                 user_gender: item.user_gender,
-                user_city: item.user_city
+                user_city: item.user_city,
+                user_role: role
             }
             obj.push(newObj);
             return obj;
         },[]);
         return res.render('admin.ejs',{status: true,data: newUsers});
-        // if(req.checkLogin == false){
-        //     return res.render('nowshowing.ejs',{status: true,data: newMoviews});
-        // }
-        // else{
-        //     return res.render('nowshowingLogin.ejs',{status: true,data: newMoviews, username: req.username, userID: req.userID});
-        // }
+        
     }
     else{
         return res.render('admin.ejs',{status: false,data: newUsers});
-        // if(req.checkLogin == false){
-        //     return res.render('nowshowing.ejs',{status: false,data: films});
-        // }
-        // else{
-        //     return res.render('nowshowingLogin.ejs',{status: false,data: films, username: req.username , userID: req.userID});
-        // }
+       
     }
 }
 module.exports = {

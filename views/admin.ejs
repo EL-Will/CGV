@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 
@@ -21,90 +23,193 @@
 
     <div style="padding-left:16px; padding-right:16px">
         <h2>List Users</h2>
-        <table id="customers">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Phone Number</th>
-                <th>Email</th>
-                <th>Password</th>
-                <!-- <th>Date Of Birth</th>
-                <th>Gender</th>
-                <th>Address</th> -->
-                <th>Action</th>
-            </tr>
-            <%for(let i=0; i< data.length; i++){%>
+        <div class="table-responsive">
+            <table id="customers">
                 <tr>
-                    <td>
-                        <%=data[i].user_id%>
-                    </td>
-                    <td>
-                        <%=data[i].user_name%>
-                    </td>
-                    <td>
-                        <%=data[i].user_phone%>
-                    </td>
-                    <td>
-                        <%=data[i].user_email%>
-                    </td>
-                    <td style="word-break: break-all">
-                        <%=data[i].user_password%>
-                    </td>
-                    <!-- <td>
-                        <%=data[i].user_dob%>
-                    </td>
-                    <td>
-                        <%=data[i].user_gender%>
-                    </td>
-                    <td>
-                        <%=data[i].user_city%>
-                    </td> -->
-                    <td class="box-crud">
-                        <a href="detail/user/<%=data[i].id%>" class="detail-btn">Detail</a>
-                        <form action="/delete-user" method="post">
-                            <input type="text" hidden value="<%=data[i].id%>" name="userId">
-                            <button type="submit" class="delete-btn">Delete</button>
-                        </form>
-                        <form action="/edit-user/<%=data[i].id%>" method="get">
-                            <button type="submit" class="edit-btn">Edit</button>
-                        </form>
-                        
-                    </td>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Phone Number</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <!-- <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Address</th> -->
+                    <th>Action</th>
                 </tr>
-                <%}%>
-
-        </table>
-
+                <%for(let i=0; i< data.length; i++){%>
+                    <tr>
+                        <td>
+                            <%=data[i].user_id%>
+                        </td>
+                        <td style="width: 150px">
+                            <%=data[i].user_name%>
+                        </td>
+                        <td style="width: 100px">
+                            <%=data[i].user_phone%>
+                        </td>
+                        <td style="width: 100px"> 
+                            <%=data[i].user_email%>
+                        </td>
+                        <td style="word-break: break-all; width: 400px">
+                            <%=data[i].user_password%>
+                        </td>
+                        <td>
+                            <%=data[i].user_role%>
+                        </td>
+                        <!-- <td>
+                            <%=data[i].user_dob%>
+                        </td>
+                        <td>
+                            <%=data[i].user_gender%>
+                        </td>
+                        <td>
+                            <%=data[i].user_city%>
+                        </td> -->
+                        <td>
+                            <div class="template-demo">
+                            <button
+                                data-uid1="<%=data[i].user_id%>"
+                                type="button"
+                                class="btn btn-danger btn-icon-text user-detail"
+                                data-toggle="modal" data-target="#userDetail"
+                            >
+                            Detail
+                            </button>
+                            <button
+                                data-uid2="<%=data[i].user_id%>"
+                                type="button"
+                                class="btn btn-warning btn-icon-text edit-detail"
+                                data-toggle="modal" data-target="#userEdit"
+                            >
+                            Edit
+                            </button>
+                            <button
+                                data-uid3="<%=data[i].user_id%>"
+                                type="button"
+                                class="btn btn-success btn-icon-text"
+                            >
+                            Delete
+                            </button>
+                            </div>
+                        </td>
+                        <!-- <td class="box-crud">
+                            <a href="detail/user/<%=data[i].id%>" class="detail-btn">Detail</a>
+                            <form action="/delete-user" method="post">
+                                <input type="text" hidden value="<%=data[i].id%>" name="userId">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                            <form action="/edit-user/<%=data[i].id%>" method="get">
+                                <button type="submit" class="edit-btn">Edit</button>
+                            </form>
+                        </td> -->
+                    </tr>
+                    <%}%>
+    
+            </table>
+        </div>
+       
         <div class="form-user">
-            <form action="/creat-new-user" method="post">
+            <h2 style="margin-top: 20px">Add Admin</h2>
+            <form action="" method="post" id="addAdmin">
                 <div class="box-inforuser">
-                    <span><strong>First Name</strong></span>
+                    <span><strong>Full Name</strong></span>
                     <br>
-                    <input type="text" placeholder="First Name" name="firstname">
+                    <input type="text" placeholder="Full Name"  name="username" id="username">
+                    <span class="err-inform" id="errUsername"></span>
                 </div>
                 <div class="box-inforuser">
-                    <span><strong>Last Name</strong></span>
+                    <span><strong>Phone Number</strong></span>
                     <br>
-                    <input type="text" placeholder="Last Name" name="lastname">
+                    <input type="text" placeholder="Phone Number"  name="phone" id="phone">
+                    <span class="err-inform" id="errPhone"></span>
                 </div>
                 <div class="box-inforuser">
                     <span><strong>Email</strong></span>
                     <br>
-                    <input type="email" placeholder="Email" required name="email">
+                    <input type="email" placeholder="Email"  name="email" id="email">
+                    <span class="err-inform" id="errEmail"></span>
+                </div>
+                <div class="box-inforuser">
+                    <span><strong>Password</strong></span>
+                    <br>
+                    <input type="password" placeholder="Password"  name="password" id="password">
+                    <span class="err-inform" id="errPassword"></span>
+                </div>
+                <div class="box-inforuser">
+                    <span><strong>Confirm Password</strong></span>
+                    <br>
+                    <input type="password" placeholder="Confirm Password"  name="confirmpassword" id="confirmpassword">
+                    <span class="err-inform" id="errConfirmPassword"></span>
+                </div>
+                <div class="box-inforuser">
+                    <span><strong>Date Of Birth</strong></span>
+                    <br>
+                    <input type="date"  name="dob" id="dob">
+                    <span class="err-inform" id="errDob"></span>
+                </div>
+                <div style="margin-top: 15px">
+                    <span><strong>Gender</strong></span>
+                    <br>
+                    <input type="radio" id="men" name="gender" value="Men">
+                    <span for="men" class="m-l-5">Nam</span>
+                    <input type="radio" id="women" name="gender" value="Women" class="m-l-10">
+                    <span for="women" class="m-l-5">Nữ</span>
+                    <br>
+                    <span class="err-inform" id="errGender"></span>
                 </div>
                 <div class="box-inforuser">
                     <span><strong>Address</strong></span>
                     <br>
-                    <input type="text" placeholder="Address" name="address">
+                    <select name="city" id="selectCity" class="select-city pd-city" >
+                        <option value="" disabled selected class="format-color">Address</option>
+                    </select>
+                    <span class="err-inform" id="errAddress"></span>
                 </div>
                 <div class="box-submit-btn">
-                    <button type="submit">Submit</button>
+                    <button type="submit" style="margin-bottom: 20px" class="btn btn-primary">Submit</button>
                 </div>
             </form>
         </div>
-
     </div>
-
+    <div class="modal" tabindex="-1" id="userDetail">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Detail</h5>
+            </div>
+            <div class="modal-body">
+                Would you like to logout?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-dark" id="quitePage" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal" tabindex="-1" id="userEdit">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Edit</h5>
+            </div>
+            <div class="modal-body">
+                Would you like to logout?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-dark" id="quitePage" data-dismiss="modal">OK</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="/js/admin_user.js"></script>
 </body>
 
 </html>

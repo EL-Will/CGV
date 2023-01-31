@@ -5,7 +5,10 @@ const {
 } = require('../controllers/admin.controllers')
 const {
     apiGetAllUsers,
-    middlwareCkeckLoginAdmin 
+    middlwareCkeckLoginAdmin,
+    middlewareGetInforUser,
+    middlewareCheckExistsInforUser,
+    CreateUser
 } = require('../controllers/users.controllers');
 const {
     apiGetAllFilms
@@ -20,6 +23,7 @@ const initWebRouteAdmin = (app) => {
     router.get('/logout-admin',Logout);
     // Call API
     router.post('/api/v1/login-admin',findOneUserAdmin)
+    router.post('/api/v1/create-admin',middlewareGetInforUser,middlewareCheckExistsInforUser,CreateUser)
     // Admin //
     router.get('/admin-user',middlwareCkeckLoginAdmin,apiGetAllUsers);
     router.get('/admin-films',middlwareCkeckLoginAdmin,apiGetAllFilms);
