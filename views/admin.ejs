@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/admin.css">
 </head>
 
-<body>
+<body id="body">
     <!-- <h1><%=data%></h1> -->
     <div class="topnav">
         <a class="active" href="/admin-user">Users</a>
@@ -79,7 +79,7 @@
                             <button
                                 data-uid2="<%=data[i].user_id%>"
                                 type="button"
-                                class="btn btn-warning btn-icon-text edit-detail"
+                                class="btn btn-warning btn-icon-text user-edit"
                                 data-toggle="modal" data-target="#userEdit"
                             >
                             Edit
@@ -87,7 +87,7 @@
                             <button
                                 data-uid3="<%=data[i].user_id%>"
                                 type="button"
-                                class="btn btn-success btn-icon-text"
+                                class="btn btn-success btn-icon-text user-delete"
                             >
                             Delete
                             </button>
@@ -173,33 +173,105 @@
         </div>
     </div>
     <div class="modal" tabindex="-1" id="userDetail">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-width">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Detail</h5>
+              <h5 class="modal-title">User Detail</h5>
             </div>
-            <div class="modal-body">
-                Would you like to logout?
+            <div class="modal-body modal-scroll">
+                <div class="form-row">
+                    <div class="form-group col-md-12">
+                      <label for="inputID">ID</label>
+                      <input type="text" readonly class="form-control" id="inputID">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputPhone">Phone</label>
+                        <input type="text" readonly class="form-control" id="inputPhone">
+                      </div>
+                    <div class="form-group col-md-12">
+                      <label for="inputUserName">User Name</label>
+                      <input type="text" readonly class="form-control" id="inputUserName">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" readonly class="form-control" id="inputEmail">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputPassword">Password</label>
+                        <input type="text" readonly class="form-control" id="inputPassword">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputRole">Role</label>
+                        <input type="text" readonly class="form-control" id="inputRole">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputDob">Date Of Birth</label>
+                        <input type="text" readonly class="form-control" id="inputDob">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputGender">Gender</label>
+                        <input type="text" readonly class="form-control" id="inputGender">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label for="inputCity">City</label>
+                        <input type="text" readonly class="form-control" id="inputCity">
+                    </div>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-dark" id="quitePage" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeUserDetail">Close</button>
             </div>
           </div>
         </div>
     </div>
     <div class="modal" tabindex="-1" id="userEdit">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-width">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title">Edit</h5>
+              <h5 class="modal-title">User Edit</h5>
             </div>
             <div class="modal-body">
-                Would you like to logout?
+                <div class="modal-body modal-scroll-edit">
+                    <form class="form-row" id="editForm">
+                        <div class="form-group col-md-12">
+                            <label for="editID">ID</label>
+                            <input type="text" readonly class="form-control" id="editID">
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="editPhone">Phone</label>
+                            <input type="text"  class="form-control" id="editPhone" name="phone">
+                            <span class="err-inform" id="errPhoneEdit"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                          <label for="editUsername">User Name</label>
+                          <input type="text" class="form-control" id="editUsername" name="username">
+                          <span class="err-inform" id="errUsernameEdit"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="editRole">Role</label>
+                            <input type="text" class="form-control" id="editRole" name="role">
+                            <span class="err-inform" id="errRoleEdit"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="editDob">Date Of Birth</label>
+                            <input type="text" onfocus="(this.type='date')" id="editDob"
+                                class="form-control" name="dob"  />
+                            <span class="err-inform" id="errDobEdit"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label for="editCity">City</label>
+                            <input type="text" class="form-control" id="editCity" name="city">
+                            <span class="err-inform" id="errCityEdit"></span>
+                        </div>
+                        <div class="form-group col-md-12">
+                            <button type="submit" style="width: 100%" class="btn btn-primary">Submit</button>
+                            <div class="spinner-border text-light pos-absolute hide-spinner" id="loading"></div>
+                        </div>
+                    </form>
+                </div>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-dark" id="quitePage" data-dismiss="modal">OK</button>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal" id="closeUserEdit">Close</button>
             </div>
           </div>
         </div>

@@ -14,7 +14,12 @@ const {
     GetBookingIDByUserID,
     GetOneUserByEmail,
     UpdatePasswordForOneUser,
-    GetAllUsers} = require('../models/user.model');
+    GetAllUsers
+} = require('../models/user.model');
+const {
+    UpdateUser,
+    DeleteUser
+} = require('../models/admin.models')
 
 let path = require('path');
 let options = {
@@ -50,8 +55,32 @@ let Logout = async(req,res)=>{
         return res.redirect('/login-admin');
     })
 }
+let middlewareCheckExistsPhonenumber = async(req,res,next)=>{
+    let exists =[];
+    exists = req.users.filter((item)=>{
+        return item.user_phone == req.body.phone && item.user_id !== Number(req.body.id);
+    })
+    if(exists.length == 0){
+        next();
+    }
+    else{
+        return res.status(200).json({status: false, message: 'Phone number exists'});
+    }
+}
+let middlewareUpdateUser= async(req,res)=>{
+    let {phone,username,role,dob,city} = req.body;
+    await UpdateUser(Number(req.body.id),[phone,username,role,dob,city]);
+    return res.status(200).json({status: true, message: 'Update User Success'})
+}
+let apiDeleteUser = async(req,res)=>{
+    await DeleteUser(req.params.uid);
+    return res.status(200).json({status: 2});
+}
 module.exports = {
     loginAdmin,
     findOneUserAdmin,
-    Logout
+    Logout,
+    middlewareCheckExistsPhonenumber,
+    middlewareUpdateUser,
+    apiDeleteUser
 }

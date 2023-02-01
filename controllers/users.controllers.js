@@ -49,6 +49,7 @@ let middlewareCheckExistsInforUser = async(req,res,next)=>{
         return res.status(200).json({status: false, message: 'Email or Phone number exists'});
     }
 }
+
 let CreateUser = async(req,res)=>{
     const hash = await bcrypt.hash(req.body.password,13);
     let {username,phone,email,dob,gender,city,agree,role} = req.body;
@@ -111,6 +112,9 @@ let apiGetOneUserByID = async(req,res)=>{
 let apiGetOneUserByUid = async(req,res)=>{
     const user = await GetOneUserByID(Number(req.params.uid));
     if(user.length >0){
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        let dob = `${months[((user[0].dob)).getMonth()]}/${((user[0].dob)).getDate()}/${((user[0].dob)).getFullYear()}`
+        user[0].dob = dob;
         return res.status(200).json({status: 1, user: user})
     }
     else{

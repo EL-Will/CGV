@@ -91,10 +91,7 @@ const initWebRoute = (app) => {
     router.post('/api/v1/reset-password',VerifyPassword);
     router.post('/api/v1/reset-update-password',apiUpdatePasswordByEmail);
     router.delete('/api/v1/delete-token/:email',apiDeleteToken);
-    
-    // Admin //
-    // router.get('/admin',middlwareCkeckLoginAdmin,apiGetAllUsers);
-    // router.get('/admin-films',middlwareCkeckLoginAdmin,apiGetAllFilms);
+
     return app.use('/', router);
 }
 

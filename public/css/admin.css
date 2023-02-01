@@ -120,3 +120,53 @@ body {
 .template-demo > .btn{
     margin-top: 1rem !important;
 }
+.p-r-0-i{
+    padding-right: 0px !important;
+}
+.pos-absolute{
+    position: absolute;
+    top: 3px;
+    left: 40%;
+}
+.hide-spinner{
+    display: none;
+}
+@media (min-width: 992px){
+    .modal-width{ 
+        max-width: 800px !important;
+    }
+    .modal-scroll{
+        overflow-y: auto;
+        max-height: 450px;
+    }
+    .modal-scroll-edit{
+        overflow-y: auto;
+        max-height: 400px;
+    }
+}
+@media (min-width: 768px) and (max-width: 991.98px){
+    .modal-width{ 
+        max-width: 800px !important;
+    }
+    .modal-scroll{
+        overflow-y: auto;
+        max-height: 450px;
+    }
+    .modal-scroll-edit{
+        overflow-y: auto;
+        max-height: 400px;
+    }
+}
+@media (min-width: 576px) and (max-width: 767.98px){
+    .modal-width{ 
+        max-width: 800px !important;
+    }
+    .modal-scroll{
+        overflow-y: auto;
+        max-height: 450px;
+    }
+    .modal-scroll-edit{
+        overflow-y: auto;
+        max-height: 400px;
+    }
+}

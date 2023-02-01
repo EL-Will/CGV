@@ -2,7 +2,7 @@ const {pool} = require('../config/connectMySQL');
 
 async function GetInforUser(){
     const [rows] =await pool.query(`
-    SELECT user_phone, user_email
+    SELECT user_phone, user_email, user_id
     FROM tbl_users`);
     return rows;
 }
@@ -75,6 +75,7 @@ async function UpdatePasswordForOneUser(email,newPass){
     WHERE user_email='${email}'`);
     return rows;
 }
+
 module.exports = {
     GetInforUser,
     SetInforUser,

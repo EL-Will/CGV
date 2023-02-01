@@ -1,7 +1,10 @@
 const {
     loginAdmin,
     findOneUserAdmin,
-    Logout
+    Logout,
+    middlewareCheckExistsPhonenumber,
+    middlewareUpdateUser,
+    apiDeleteUser
 } = require('../controllers/admin.controllers')
 const {
     apiGetAllUsers,
@@ -22,8 +25,10 @@ const initWebRouteAdmin = (app) => {
     router.get('/login-admin', loginAdmin);
     router.get('/logout-admin',Logout);
     // Call API
-    router.post('/api/v1/login-admin',findOneUserAdmin)
-    router.post('/api/v1/create-admin',middlewareGetInforUser,middlewareCheckExistsInforUser,CreateUser)
+    router.post('/api/v1/login-admin',findOneUserAdmin);
+    router.post('/api/v1/create-admin',middlewareGetInforUser,middlewareCheckExistsInforUser,CreateUser);
+    router.put('/api/v1/update-user',middlewareGetInforUser,middlewareCheckExistsPhonenumber,middlewareUpdateUser);
+    router.delete('/api/v1/delete-user/:uid',apiDeleteUser)
     // Admin //
     router.get('/admin-user',middlwareCkeckLoginAdmin,apiGetAllUsers);
     router.get('/admin-films',middlwareCkeckLoginAdmin,apiGetAllFilms);
